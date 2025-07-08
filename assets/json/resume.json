@@ -5,9 +5,9 @@
     "email": "rohitmanjappallil@gmail.com",
     "phone": "+49 15560074054",
     "url": "https://rohxander.github.io",
-    "summary": "Technologist with a passion for systems, communication networks, and embedded software. Strong in execution, curious by nature, and deeply invested in building elegant solutions.",
+    "summary": "Engineer passionate about embedded systems, wireless technologies, and clean firmware design. Experienced across product validation, peripheral interface testing, and real-world systems optimization.",
     "location": {
-      "address": "Paul-Gossen-Straße",
+      "address": "Paul-Gossen-Strasse 34",
       "postalCode": "91052",
       "city": "Erlangen",
       "countryCode": "DE",
@@ -26,11 +26,11 @@
       "name": "Exasol AG",
       "position": "Working Student – IT Operations & Analytics",
       "startDate": "2024-07-01",
-      "summary": "Working in IT operations and business analytics. Responsible for Power BI dashboards, Salesforce support, and process optimization.",
+      "summary": "Power BI automation, Salesforce support, and internal debugging for IT operations.",
       "highlights": [
-        "Built internal dashboards for IT metrics and workflows",
-        "Automated reporting and troubleshooting pipelines",
-        "Contributed to Salesforce support and optimization"
+        "Built internal Power BI dashboards for data-driven decisions",
+        "Supported Salesforce development and troubleshooting",
+        "Contributed to web debugging and internal tools"
       ]
     },
     {
@@ -38,12 +38,13 @@
       "position": "Application Engineer – Wireless Solutions",
       "startDate": "2022-03-01",
       "endDate": "2024-03-01",
-      "summary": "Focused on embedded wireless systems, enterprise-grade Wi-Fi integration, and firmware tool development.",
+      "summary": "Developed and validated firmware applications for wireless MCUs and regulatory certifications.",
       "highlights": [
-        "Implemented WPA2/WPA3 enterprise security using TLS/TTLS",
-        "Built internal tools to validate embedded peripherals: UART, ADC, SPI",
-        "Assisted in CE/FCC/Class-B certification for embedded products",
-        "Worked on memory optimization for QSPI and SQI interfaces"
+        "Implemented WPA2/WPA3 Enterprise security protocols using TLS/TTLS and FreeRADIUS",
+        "Designed UART flow control system supporting up to 25 Mbps",
+        "Built QSPI/SQI firmware for high-speed flash memory operations",
+        "Assisted in Class-B functional safety and CE/FCC certification processes",
+        "Created multiprotocol test apps for UART, I2C, SPI, ADC, PWM, Ethernet, Wi-Fi"
       ]
     },
     {
@@ -51,106 +52,102 @@
       "position": "Systems Engineer – Financial Services Digital",
       "startDate": "2021-01-01",
       "endDate": "2022-03-01",
-      "summary": "Backend API integration and client-side scripting for banking platforms.",
+      "summary": "Developed backend APIs using Spring Boot and MuleSoft for HSBC client.",
       "highlights": [
-        "Worked with Java, MuleSoft, Spring for API development",
-        "Used JIRA, Confluence in agile delivery setup",
-        "Supported integration testing and bug resolution"
+        "Worked on API integration and backend scripting",
+        "Collaborated on banking application documentation via Confluence",
+        "Contributed to agile team delivery and defect resolution"
       ]
     }
   ],
   "education": [
     {
       "institution": "FAU Erlangen-Nürnberg",
-      "area": "Information and Communication Technology",
+      "area": "Information and Communications Technology",
       "studyType": "Master's",
       "startDate": "2024-04-01",
       "endDate": "",
-      "score": "",
-      "courses": ["Embedded Systems", "Wireless Communication", "AI", "Secure Hardware", "MIMO/Channel Coding"]
+      "courses": ["Embedded Systems", "Wireless Communication", "Secure Hardware", "MIMO", "AI"]
     },
     {
       "institution": "College of Engineering Chengannur",
       "area": "Electrical and Electronics Engineering",
       "studyType": "Bachelor's",
       "startDate": "2016-08-01",
-      "endDate": "2020-06-30",
-      "score": ""
-    },
-    {
-      "institution": "Emertxe Information Technologies",
-      "area": "Embedded Systems & C Programming",
-      "studyType": "Certification",
-      "startDate": "2021-09-01",
-      "endDate": "2022-03-01"
+      "endDate": "2020-06-30"
     }
   ],
   "skills": [
     {
-      "name": "Programming Languages",
-      "keywords": ["Embedded C", "Python", "Java (Basic)", "Bash", "Typescript"]
+      "name": "Software Development",
+      "keywords": ["Embedded C", "C++", "Python", "Shell Scripting"]
     },
     {
-      "name": "Tools & Platforms",
-      "keywords": ["Git", "Linux", "Power BI", "Salesforce", "MPLAB X IDE", "Wirreshark", "Visual Studio", "PyCharm", "Adobe Suite", "MS Office"]
+      "name": "Tools & IDEs",
+      "keywords": ["MPLAB X IDE", "Wireshark", "Saleae Logic", "TeraTerm", "PuTTY", "VS Code", "PyCharm", "MatLab"]
     },
     {
-      "name": "Protocols & Systems",
-      "keywords": ["Wi-Fi", "RTOS", "PIC32 MCUs", "UART", "SPI", "I2C", "QSPI", "WPA2/WPA3 Enterprise"]
+      "name": "Web & Backend",
+      "keywords": ["Java", "HTML", "CSS", "TypeScript", "Spring Boot", "MuleSoft"]
     },
     {
-      "name": "Debugging Tools",
-      "keywords": ["Oscilloscopes", "Logic Analyzers", "Serial Debuggers"]
+      "name": "Version Control & Suites",
+      "keywords": ["Git", "GitHub", "Bitbucket", "JIRA", "Confluence"]
+    },
+    {
+      "name": "Interfaces & Protocols",
+      "keywords": ["UART", "SPI", "I2C", "QSPI", "PWM", "ADC", "Ethernet", "Wi-Fi", "TLS/TTLS"]
+    },
+    {
+      "name": "Data Tools",
+      "keywords": ["Power BI", "MS Excel", "Salesforce"]
     }
   ],
   "projects": [
     {
       "name": "Wi-Fi Enterprise Security Mode",
-      "summary": "Developed TLS/TTLS-based secure Wi-Fi protocols integrated with RADIUS for embedded platforms.",
-      "startDate": "2023-01-01",
+      "summary": "Developed WPA2/WPA3 enterprise protocols with FreeRADIUS integration.",
+      "url": "https://microchip.my.site.com/s/article/WFI32-Enterprise-Security-Application-Note"
+    },
+    {
+      "name": "UART Flow Control",
+      "summary": "Validated high-speed UART flow control with RTS/CTS up to 25 Mbps.",
+      "url": "https://ww1.microchip.com/downloads/en/DeviceDoc/61107G.pdf"
+    },
+    {
+      "name": "QSPI/SQI Memory Integration",
+      "summary": "Built and validated high-speed QSPI/SQI drivers on SST26 flash.",
       "url": "https://ww1.microchip.com/downloads/aemDocuments/documents/OTH/ProductDocuments/ReferenceManuals/60001244C.pdf"
     },
     {
-      "name": "Class-B Certification Testing",
-      "summary": "Automated testing and validation for IEC 60730 Class-B safety compliance in embedded MCUs.",
-      "startDate": "2023-03-01",
-      "url": "https://ww1.microchip.com/downloads/aemDocuments/documents/OTH/ProductDocuments/ReferenceManuals/60001244C.pdf"
-    },
-    {
-      "name": "UART Hardware Flow Control",
-      "summary": "Implemented UART high-speed communication with RTS/CTS support.",
-      "startDate": "2022-12-01",
-      "url": "https://ww1.microchip.com/downloads/aemDocuments/documents/OTH/ProductDocuments/ReferenceManuals/60001244C.pdf"
-    },
-    {
-      "name": "Python QT8 Touch Recognizer",
-      "summary": "GUI-based tool for interpreting touch inputs into character recognition using Python.",
-      "startDate": "2022-10-01",
+      "name": "Product Regulatory Certification",
+      "summary": "Developed multiprotocol test apps (Wi-Fi, ADC, SPI, I2C, etc.) for CE/FCC.",
       "url": ""
+    },
+    {
+      "name": "Class-B Functional Safety",
+      "summary": "Validated IEC 60730 Class-B safety mechanisms for embedded MCUs.",
+      "url": "https://ww1.microchip.com/downloads/aemDocuments/documents/OTH/ProductDocuments/Certifications/PIC32MZ-W1+Class+B+Library+Testreport-296949-TL2-2.pdf"
     }
   ],
   "languages": [
-    {
-      "language": "English",
-      "fluency": "Fluent"
-    },
-    {
-      "language": "Hindi",
-      "fluency": "Native speaker"
-    }
+    { "language": "English", "fluency": "C1" },
+    { "language": "Hindi", "fluency": "C2" },
+    { "language": "Malayalam", "fluency": "C2" },
+    { "language": "German", "fluency": "A1" }
   ],
   "interests": [
     {
-      "name": "Technology",
-      "keywords": ["Computers", "Mobile Tech", "Semiconductors", "Wireless Systems"]
+      "name": "Technology & Science",
+      "keywords": ["Computers", "Wireless Systems", "Semiconductors", "Embedded Design"]
     },
     {
-      "name": "Engineering",
-      "keywords": ["Automobiles", "Aircraft", "System Design", "Communication Networks"]
+      "name": "Engineering & Machines",
+      "keywords": ["Automobiles", "Aircraft", "System Design"]
     },
     {
-      "name": "Creative",
-      "keywords": ["Photography", "Videography", "Art", "Architecture", "History"]
+      "name": "Creative & Cultural",
+      "keywords": ["Photography", "Videography", "Art", "Architecture", "History", "Music", "Chess"]
     }
   ]
 }
