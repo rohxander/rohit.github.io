@@ -120,4 +120,4 @@ As we look toward 2030, the central question shifts from _"How fast can we conne
 
 ---
 
-_For further discussions or collaboration on 6G research, feel free to connect via [GitHub](#) or [LinkedIn](#)._
+_For further discussions or collaboration on 6G research, feel free to connect via [GitHub](https://github.com/rohxander) or [LinkedIn](https://www.linkedin.com/in/rohitprakashmk/)._
