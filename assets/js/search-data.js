@@ -411,17 +411,17 @@ ninja.data = [{
               window.location.href = "/projects/2_project/";
             },},{id: "projects-qspi-validation-application",
           title: 'QSPI Validation Application',
-          description: "Integrated and validated QSPI/SQI interface on Microchip modules.",
+          description: "Integrated and validated QSPI/SQI flash interface on Microchip modules.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/3_project/";
             },},{id: "projects-class-b-functional-safety-certification",
           title: 'Class-B Functional Safety Certification',
-          description: "Assisted in validating error-catch mechanisms for SRAM, FLASH, CPU, and I/O to support EN/IEC 60730 Class-B safety certification on PIC32MZW1",
+          description: "Assisted in validating error-catch mechanisms for SRAM, FLASH, CPU, and I/O to support EN/IEC 60730 Class-B safety certification on PIC32MZW1.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/4_project/";
-            },},{id: "projects-tuv-certification-amp-module-validation",
-          title: 'TUV Certification &amp;amp; Module Validation',
-          description: "Developed Certification apps with IPv6 support and parallel testing for UART, SPI, ADC, I2C, PWM, Wi-Fi, and Ethernet peripherals.certification on PIC32MZW1",
+            },},{id: "projects-tüv-certification-amp-module-validation",
+          title: 'TÜV Certification &amp;amp; Module Validation',
+          description: "Developed IPv6-compatible firmware applications to support CE/FCC certification and validate UART, SPI, I2C, ADC, PWM, Ethernet, and Wi-Fi peripherals on PIC32MZW1.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/5_project/";
             },},{id: "projects-python-uart-based-alphabet-recognition",
