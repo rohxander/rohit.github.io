@@ -55,15 +55,15 @@ ninja.data = [{
             window.location.href = "/blog/2025/visions-for-6g/";
           
         },
-      },{id: "post-a-post-with-formatting-and-links",
+      },{id: "post-rssi-fingerprinting-in-iot-a-modern-approach-to-indoor-localization",
         
-          title: "a post with formatting and links",
+          title: "RSSI Fingerprinting in IoT: A Modern Approach to Indoor Localization",
         
-        description: "march &amp; april, looking forward to summer",
+        description: "An exploration of RSSI-based localization and fingerprinting techniques—highlighting methods, challenges, and intelligent enhancements for future IoT systems.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2015/eelisa-6g-summer-school/";
+            window.location.href = "/blog/2025/RSSI-Fingerprinting-in-IoT/";
           
         },
       },{id: "books-the-almanack-of-naval-ravikant",
