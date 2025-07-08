@@ -60,7 +60,7 @@ The Extensible Authentication Protocol (EAP) is a point-to-point (P2P) wireless 
 
 <div class="row">
   <div class="col-sm mt-3 mt-md-0">
-    {% include figure.liquid loading="eager" path="assets/img/WIFI_ENT_2.png" class="img-fluid rounded z-depth-1" %}
+    {% include figure.liquid loading="eager" path="assets/img/WIFI_ENT_3.png" class="img-fluid rounded z-depth-1" %}
   </div>
 </div>
 
@@ -68,7 +68,7 @@ During EAP authentication, the supplicant and the authentication server derive a
 
 <div class="row">
   <div class="col-sm mt-3 mt-md-0">
-    {% include figure.liquid loading="eager" path="assets/img/WIFI_ENT_3.png" class="img-fluid rounded z-depth-1" %}
+    {% include figure.liquid loading="eager" path="assets/img/WIFI_ENT_4.png" class="img-fluid rounded z-depth-1" %}
   </div>
 </div>
 
