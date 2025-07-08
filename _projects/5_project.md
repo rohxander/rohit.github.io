@@ -1,78 +1,72 @@
 ---
 layout: page
-title: TUV Certification & Module Validation
-description: Developed Certification apps with IPv6 support and parallel testing for UART, SPI, ADC, I2C, PWM, Wi-Fi, and Ethernet peripherals.certification on PIC32MZW1
+title: TÜV Certification & Module Validation
+description: Developed IPv6-compatible firmware applications to support CE/FCC certification and validate UART, SPI, I2C, ADC, PWM, Ethernet, and Wi-Fi peripherals on PIC32MZW1.
 img: assets/img/certification.png
 importance: 5
 category: Industrial
 related_publications: false
 ---
 
-At Microchip Technology, I was responsible for validating **hardware UART flow control (RTS/CTS)** for high-speed embedded communication. The target was to test flow control performance across multiple configurations and baud rates, with reliable operation expected up to 10 Mbps. During testing, I was able to verify functionality up to **25 Mbps**.
+At Microchip Technology, I worked on module validation and regulatory certification support for **PIC32MZW1**-based wireless modules. My primary responsibility was to design embedded firmware applications for internal CE/FCC/TÜV testing and ensure parallel validation of peripheral functionality.
+
+These apps served as internal diagnostic tools for the hardware validation team and were crucial for certification procedures.
 
 ---
 
 ### Project Objective
 
-- Confirm RTS/CTS-based UART communication stability under high-speed, full-duplex conditions
-- Evaluate communication behavior on dedicated UART pins vs PPS-configured pins
-- Provide structured test applications to support validation at scale
+- Develop and maintain embedded applications for peripheral-level validation under certification conditions
+- Integrate **IPv6** networking support in firmware to meet modern compliance requirements
+- Provide structured test flows that enabled simultaneous testing of UART, SPI, I2C, PWM, ADC, Ethernet, and Wi-Fi modules
 
 ---
 
-### Development Process
+### My Role & Contributions
 
-Initial testing was conducted using **Tera Term**, but its fixed baud rate settings limited practical testing. I moved to **PuTTY**, which supported higher speeds, but started failing consistently beyond 2.5 Mbps. This is when I introduced the **Saleae Logic Analyzer** for more precise signal monitoring, and later used **digital oscilloscopes** for final frequency measurements.
-
-To test CTS input handling, I initially grounded the CTS line on the MCU and monitored UART behavior. This confirmed that the MCU paused and resumed transmission based on CTS state — validating the handshake logic.
-
-To enable bidirectional, high-speed flow control testing, I programmed **two WFI32E02 boards**:
-
-- One board acted as the initiator and echo responder
-- The other purely as a repeater
-- Test characters (`'U'`, binary `01010101`) were used for clean waveform visibility and timing analysis
-
-This setup eliminated the PC as a bottleneck and allowed direct MCU-to-MCU validation.
+- Designed modular test applications that validated peripheral IOs and connectivity protocols
+- Integrated **dual-mode IPv4/IPv6 networking stack** using MPLAB Harmony framework
+- Optimized test flows for execution during certification trials (CE, FCC, UKCA, TÜV)
+- Ensured all peripheral drivers were operational in parallel, improving test speed and efficiency
+- Documented use cases and setup instructions for the internal validation team and external auditors
 
 ---
 
-### Testing Configurations & Observations
+### Certification Scope
 
-- Baud rates tested from 9600 bps up to 25 Mbps
-- Clock settings were adjusted to support different speed targets
-- UART control registers were reconfigured for high-speed mode and flow control enablement
-- Both **dedicated UART pins** and **PPS(Peripheral Pin Select)-configured pins** were tested
+The firmware I contributed to played a key role in supporting product validation under the following global certifications:
 
-  - As expected, **PPS pins supported speeds up to 5 Mbps** (per device spec)
-  - **Dedicated pins maintained full signal stability at 25 Mbps**
-
-  [Note : The Peripheral Pin Select (PPS) feature allows a design to choose the pins used by many of the devices digital peripheral]
-
-When attempting to probe RTS/CTS lines with the logic analyzer, unexpected grounding issues affected readings. However, functionality was still verified through **manual wire disconnection tests**, where communication paused and resumed without data loss — confirming proper hardware handshake operation.
+- **Radio Certifications**: FCC (USA), ISED (Canada), CE (EU), UKCA (UK), MIC (Japan), KCC (Korea), NCC (Taiwan), SRRC (China)
+- **Environmental Compliance**: RoHS, REACH
+- **Safety Standards**: TÜV product certification preparation (internal test support)
 
 ---
 
 ### Final Deliverables
 
-The test routines were handed over to the **Module Validation Team** for further environmental and stress testing, including evaluation across temperature variations and extended runtime scenarios.
+- Delivered multiple certification apps covering key MCU peripherals and networking stacks
+- Enabled live testing using command-based UART controls and dynamic pin reconfigurations
+- Created logs, debug hooks, and LED indicators for test progression tracking
+- Authored usage and configuration guides used by both validation and certification teams
 
 ---
 
 ### Tools & Platforms
 
-PIC32, WFI32E02  
+PIC32MZW1 / WFI32E02  
 MPLAB X IDE, Harmony v3  
-PuTTY, Saleae Logic Analyzer  
-Digital Oscilloscopes, FTDI Cables
+TeraTerm, UART CLI tools  
+Wireshark, Logic Analyzers  
+External antennas, RF test jigs
 
 ---
 
 <div class="row">
   <div class="col-sm mt-3 mt-md-0">
-    {% include figure.liquid loading="eager" path="assets/img/WFI32E02.png" title="WFI32E02 Development Board" class="img-fluid rounded z-depth-1" %}
+    {% include figure.liquid loading="eager" path="assets/img/WFI32E02.png" title="WFI32E02 module used in regulatory testing" class="img-fluid rounded z-depth-1" %}
   </div>
 </div>
 
 <div class="caption">
-  WFI32E02 board used for UART flow control testing and full-duplex setup.
+  WFI32E02 development board used for multi-peripheral validation and RF certification workflows.
 </div>

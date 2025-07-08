@@ -1,78 +1,67 @@
 ---
 layout: page
 title: Class-B Functional Safety Certification
-description: Assisted in validating error-catch mechanisms for SRAM, FLASH, CPU, and I/O to support EN/IEC 60730 Class-B safety certification on PIC32MZW1
+description: Assisted in validating error-catch mechanisms for SRAM, FLASH, CPU, and I/O to support EN/IEC 60730 Class-B safety certification on PIC32MZW1.
 img: assets/img/class_b_thumbnail.png
 importance: 4
 category: Industrial
 related_publications: false
 ---
 
-At Microchip Technology, I was responsible for validating **hardware UART flow control (RTS/CTS)** for high-speed embedded communication. The target was to test flow control performance across multiple configurations and baud rates, with reliable operation expected up to 10 Mbps. During testing, I was able to verify functionality up to **25 Mbps**.
+Safety specifications, such as IEC 60335, are used to ensure manufactures have designed their products to operate safely. IEC 60335 defines safety standards at a system level. IEC 60730, which is referenced by IEC 60335, addresses safety of electronic controls in appliances. Currently IEC 60730 is mandatory for appliances sold in Europe and widespread adoption is likely
+
+At Microchip Technology, I contributed to the **Class-B safety certification** of the PIC32MZW1 microcontroller platform, supporting compliance with **EN/IEC 60730 standards**. These standards are critical for functional safety in household and industrial appliances.
+
+I joined the project during the post-development phase and was responsible for extending, testing, and maintaining the existing test framework—eventually taking full ownership after the initial lead transitioned out.
 
 ---
 
 ### Project Objective
 
-- Confirm RTS/CTS-based UART communication stability under high-speed, full-duplex conditions
-- Evaluate communication behavior on dedicated UART pins vs PPS-configured pins
-- Provide structured test applications to support validation at scale
+- Validate error-detection and fault-handling mechanisms in PIC32MZW1 according to IEC 60730 Class-B
+- Support formal third-party certification processes by TUV and other regulators
+- Document safety validation procedures and ensure test coverage across core subsystems
 
 ---
 
-### Development Process
+### My Role & Contributions
 
-Initial testing was conducted using **Tera Term**, but its fixed baud rate settings limited practical testing. I moved to **PuTTY**, which supported higher speeds, but started failing consistently beyond 2.5 Mbps. This is when I introduced the **Saleae Logic Analyzer** for more precise signal monitoring, and later used **digital oscilloscopes** for final frequency measurements.
-
-To test CTS input handling, I initially grounded the CTS line on the MCU and monitored UART behavior. This confirmed that the MCU paused and resumed transmission based on CTS state — validating the handshake logic.
-
-To enable bidirectional, high-speed flow control testing, I programmed **two WFI32E02 boards**:
-
-- One board acted as the initiator and echo responder
-- The other purely as a repeater
-- Test characters (`'U'`, binary `01010101`) were used for clean waveform visibility and timing analysis
-
-This setup eliminated the PC as a bottleneck and allowed direct MCU-to-MCU validation.
-
----
-
-### Testing Configurations & Observations
-
-- Baud rates tested from 9600 bps up to 25 Mbps
-- Clock settings were adjusted to support different speed targets
-- UART control registers were reconfigured for high-speed mode and flow control enablement
-- Both **dedicated UART pins** and **PPS(Peripheral Pin Select)-configured pins** were tested
-
-  - As expected, **PPS pins supported speeds up to 5 Mbps** (per device spec)
-  - **Dedicated pins maintained full signal stability at 25 Mbps**
-
-  [Note : The Peripheral Pin Select (PPS) feature allows a design to choose the pins used by many of the devices digital peripheral]
-
-When attempting to probe RTS/CTS lines with the logic analyzer, unexpected grounding issues affected readings. However, functionality was still verified through **manual wire disconnection tests**, where communication paused and resumed without data loss — confirming proper hardware handshake operation.
+- Performed **automated and manual testing** of safety library routines targeting:
+  - **CPU Registers**
+  - **Program Counter (PC)**
+  - **SRAM/FLASH memory**
+  - **I/O pin monitoring**
+- Helped simulate fault injection scenarios and verify expected safety responses
+- Created structured test cases for fault coverage validation across different boot and runtime conditions
+- Maintained and cleaned up the test framework post-certification to support internal reuse and portability
+- Took over **codebase ownership** after project handover, including documentation and minor debugging
 
 ---
 
 ### Final Deliverables
 
-The test routines were handed over to the **Module Validation Team** for further environmental and stress testing, including evaluation across temperature variations and extended runtime scenarios.
+- Assisted in preparing Class-B test documentation for **certification submission**
+- Helped complete the internal test report used in the official certification linked below:
+  - 📄 [Microchip Class B Test Report (PDF)](https://ww1.microchip.com/downloads/aemDocuments/documents/OTH/ProductDocuments/Certifications/PIC32MZ-W1+Class+B+Library+Testreport-296949-TL2-2.pdf)
+- Delivered reusable project templates and test documentation for internal development teams
 
 ---
 
 ### Tools & Platforms
 
-PIC32, WFI32E02  
-MPLAB X IDE, Harmony v3  
-PuTTY, Saleae Logic Analyzer  
-Digital Oscilloscopes, FTDI Cables
+- **PIC32MZW1**, MPLAB Harmony v3
+- **MPLAB X IDE**, Internal Class-B Library
+- Manual test scripts, IDE breakpoints, embedded fault injection
+- Support hardware for boundary and exception testing
 
 ---
 
 <div class="row">
   <div class="col-sm mt-3 mt-md-0">
-    {% include figure.liquid loading="eager" path="assets/img/WFI32E02.png" title="WFI32E02 Development Board" class="img-fluid rounded z-depth-1" %}
+    {% include figure.liquid loading="eager" path="assets/img/WFI32E02.png" title="PIC32MZW1 Module (WFI32 variant)" class="img-fluid rounded z-depth-1" %}
   </div>
 </div>
 
 <div class="caption">
-  WFI32E02 board used for UART flow control testing and full-duplex setup.
+  PIC32MZW1 board used for Class-B safety validation during certification support phase.
 </div>

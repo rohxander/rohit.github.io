@@ -8,77 +8,52 @@ category: Personal
 related_publications: false
 ---
 
-At Microchip Technology, I was responsible for validating **hardware UART flow control (RTS/CTS)** for high-speed embedded communication. The target was to test flow control performance across multiple configurations and baud rates, with reliable operation expected up to 10 Mbps. During testing, I was able to verify functionality up to **25 Mbps**.
+This personal project was designed to explore UART-based embedded interaction and basic pattern recognition. Using a **QT8 Explained Pro development board**, I created a complete **Python GUI application** that could receive real-time touch input from the board and classify it as a hand-drawn alphabet.
+
+The board transmitted a **5x5 matrix** over UART representing capacitive touch detection. The data was then parsed and visualized in Python, where a simple recognition logic was applied to identify which letter had been drawn.
 
 ---
 
 ### Project Objective
 
-- Confirm RTS/CTS-based UART communication stability under high-speed, full-duplex conditions
-- Evaluate communication behavior on dedicated UART pins vs PPS-configured pins
-- Provide structured test applications to support validation at scale
+- Receive and visualize 5x5 touch data from the QT8 board via UART
+- Develop a Python interface to display and interpret the input in real-time
+- Implement rule-based classification to recognize alphabet characters
 
 ---
 
 ### Development Process
 
-Initial testing was conducted using **Tera Term**, but its fixed baud rate settings limited practical testing. I moved to **PuTTY**, which supported higher speeds, but started failing consistently beyond 2.5 Mbps. This is when I introduced the **Saleae Logic Analyzer** for more precise signal monitoring, and later used **digital oscilloscopes** for final frequency measurements.
-
-To test CTS input handling, I initially grounded the CTS line on the MCU and monitored UART behavior. This confirmed that the MCU paused and resumed transmission based on CTS state — validating the handshake logic.
-
-To enable bidirectional, high-speed flow control testing, I programmed **two WFI32E02 boards**:
-
-- One board acted as the initiator and echo responder
-- The other purely as a repeater
-- Test characters (`'U'`, binary `01010101`) were used for clean waveform visibility and timing analysis
-
-This setup eliminated the PC as a bottleneck and allowed direct MCU-to-MCU validation.
+- **UART Communication**: Configured the QT8 board to send the touch matrix in serial format. Each cell's state was represented as binary (1/0) and sent line by line.
+- **Python GUI**: Used `PySerial` to read UART data and `Tkinter` to dynamically render the matrix.
+- **Recognition Logic**: Implemented a basic rule-based recognizer that could detect and label characters like A, E, F, H, etc., from the 5x5 matrix. This mimicked a low-resolution digital sketchpad.
+- **Debugging**: Observed data timing issues during high-speed input bursts and added UART buffer management and delay handling to maintain GUI sync.
 
 ---
 
-### Testing Configurations & Observations
+### Highlights
 
-- Baud rates tested from 9600 bps up to 25 Mbps
-- Clock settings were adjusted to support different speed targets
-- UART control registers were reconfigured for high-speed mode and flow control enablement
-- Both **dedicated UART pins** and **PPS(Peripheral Pin Select)-configured pins** were tested
-
-  - As expected, **PPS pins supported speeds up to 5 Mbps** (per device spec)
-  - **Dedicated pins maintained full signal stability at 25 Mbps**
-
-  [Note : The Peripheral Pin Select (PPS) feature allows a design to choose the pins used by many of the devices digital peripheral]
-
-When attempting to probe RTS/CTS lines with the logic analyzer, unexpected grounding issues affected readings. However, functionality was still verified through **manual wire disconnection tests**, where communication paused and resumed without data loss — confirming proper hardware handshake operation.
-
----
-
-### Final Deliverables
-
-The test routines were handed over to the **Module Validation Team** for further environmental and stress testing, including evaluation across temperature variations and extended runtime scenarios.
-
----
-
-### Reference
-
-- [PIC32 Family Reference Manual - Section 21: Universal Asynchronous Receiver Transmitter (UART)](https://ww1.microchip.com/downloads/en/DeviceDoc/61107G.pdf)
+- Demonstrated integration of an embedded capacitive input device with a desktop visualization tool
+- Created a modular Python script allowing for future enhancements with ML-based pattern recognition
+- Explored timing challenges in real-time serial communication and UI rendering synchronization
 
 ---
 
 ### Tools & Platforms
 
-PIC32, WFI32E02  
-MPLAB X IDE, Harmony v3  
-PuTTY, Saleae Logic Analyzer  
-Digital Oscilloscopes, FTDI Cables
+- **QT8 Explained Pro** (5x5 capacitive touch board)
+- **Python** with `PySerial`, `Tkinter`
+- **Tera Term**, custom UART protocol
+- Windows PC, Serial-to-USB interface
 
 ---
 
 <div class="row">
   <div class="col-sm mt-3 mt-md-0">
-    {% include figure.liquid loading="eager" path="assets/img/WFI32E02.png" title="WFI32E02 Development Board" class="img-fluid rounded z-depth-1" %}
+    {% include figure.liquid loading="eager" path="assets/img/touch_recognition.png" title="Alphabet Recognition GUI" class="img-fluid rounded z-depth-1" %}
   </div>
 </div>
 
 <div class="caption">
-  WFI32E02 board used for UART flow control testing and full-duplex setup.
+  Python-based UI showing touch pattern recognition from QT8 Pro board.
 </div>
