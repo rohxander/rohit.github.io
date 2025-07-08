@@ -9,7 +9,14 @@ ninja.data = [{
     handler: () => {
       window.location.href = "/";
     },
-  },{id: "nav-projects",
+  },{id: "nav-blog",
+          title: "blog",
+          description: "",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/blog/";
+          },
+        },{id: "nav-projects",
           title: "projects",
           description: "A portfolio of engineering, experimentation, and expression.",
           section: "Navigation",
@@ -37,7 +44,18 @@ ninja.data = [{
               handler: () => {
                 window.location.href = "/blog/";
               },
-            },{id: "post-a-post-with-plotly-js",
+            },{id: "post-visions-for-6g-towards-intelligent-resilient-and-ubiquitous-communication",
+        
+          title: "Visions for 6G: Towards Intelligent, Resilient, and Ubiquitous Communication",
+        
+        description: "A forward-looking exploration of 6G technologies and architectural principles—focusing on intelligence, sensing, sustainability, and global equity.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2025/visions-for-6g/";
+          
+        },
+      },{id: "post-a-post-with-plotly-js",
         
           title: "a post with plotly.js",
         
@@ -365,6 +383,17 @@ ninja.data = [{
         handler: () => {
           
             window.location.href = "/blog/2015/images/";
+          
+        },
+      },{id: "post-a-post-with-formatting-and-links",
+        
+          title: "a post with formatting and links",
+        
+        description: "march &amp; april, looking forward to summer",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2015/eelisa-6g-summer-school/";
           
         },
       },{id: "post-a-post-with-formatting-and-links",
