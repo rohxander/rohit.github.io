@@ -404,9 +404,9 @@ ninja.data = [{
           description: "Validating RTS/CTS hardware flow control on PIC32 at speeds up to 25 Mbps.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/1_project/";
-            },},{id: "projects-wi-fi-enterprise-security-applicaiton",
-          title: 'Wi-Fi Enterprise Security Applicaiton',
-          description: "Implemented WPA2/WPA3 enterprise protocols using TLS/TTLS with FreeRADIUS integration on WFI32 modules.",
+            },},{id: "projects-wi-fi-enterprise-security-application",
+          title: 'Wi‑Fi Enterprise Security Application',
+          description: "Implemented WPA2/WPA3 Enterprise (TTLS/TLS/PEAP) with FreeRADIUS integration on WFI32 modules.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/2_project/";
             },},{id: "projects-qspi-validation-application",
