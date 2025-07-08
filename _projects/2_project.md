@@ -96,22 +96,22 @@ The EAP Authentication is a framework which provides request - response function
 
 The EAP-TLS (RFC 5216) uses the TLS protocol (RFC 5246), which is the Internet Engineering Task Force's (IETF ) latest version of the Secure Socket Layer (SSL) protocol. TLS provides a way to use certificates for both user and server authentication and for dynamic session key generation.
 
-1.       EAP-TLS conversation typically begins with the authenticator and the peer negotiating EAP. EAP server must respond with an EAP-TLS/Start packet, which is an EAP-Request packet with EAPType=EAP-TLS, the Start(S) bit is set, and no data.
+1.        EAP-TLS conversation typically begins with the authenticator and the peer negotiating EAP. EAP server must respond with an EAP-TLS/Start packet, which is an EAP-Request packet with EAPType=EAP-TLS, the Start(S) bit is set, and no data.
 
-2.       The EAP-TLS conversation then begins with the peer sending an EAP-Response packet with EAPType=EAP-TLS. The data field of that packet encapsulates one or more TLS records in TLS record layer format, containing a TLS client_hello handshake message.
+2.        The EAP-TLS conversation then begins with the peer sending an EAP-Response packet with EAPType=EAP-TLS. The data field of that packet encapsulates one or more TLS records in TLS record layer format, containing a TLS client_hello handshake message.
 
-3.       The EAP server then responds with server_hello handshake message, TLS certificate, server_key_exchange, certificate_request, server_hello_done and/or finished handshake messages, and/or a TLS change_cipher_spec message.
+3.        The EAP server then responds with server_hello handshake message, TLS certificate, server_key_exchange, certificate_request, server_hello_done and/or finished handshake messages, and/or a TLS change_cipher_spec message.
 
-4.       The Client must respond to the EAP-Request with an EAP-Response packet of EAP-Type=EAPTLS. The data field must encapsulate one or more TLS records containing a TLS certificate, TLS certificate verify, TLS client_key_exchange, change_cipher_spec, and TLS finished message.
+4.        The Client must respond to the EAP-Request with an EAP-Response packet of EAP-Type=EAPTLS. The data field must encapsulate one or more TLS records containing a TLS certificate, TLS certificate verify, TLS client_key_exchange, change_cipher_spec, and TLS finished message.
 
-5.       If a ChangeCipherSpec message is sent by the client and the client requests to switch to symmetric key encryption, the server will respond with its own ChangeCipherSpec message to confirm the switching to symmetric key encryption and send its TLS finished message under the new Cipher Spec.
-6.       If the EAP server authenticates successfully, the peer must send an EAP-Response packet of EAPType=EAP-TLS, and no data.
+5.        If a ChangeCipherSpec message is sent by the client and the client requests to switch to symmetric key encryption, the server will respond with its own ChangeCipherSpec message to confirm the switching to symmetric key encryption and send its TLS finished message under the new Cipher Spec.
+6.        If the EAP server authenticates successfully, the peer must send an EAP-Response packet of EAPType=EAP-TLS, and no data.
 
-7.       The authentication server and the supplicant each derive the PMK (from material exchanged during the TLS handshake).
+7.        The authentication server and the supplicant each derive the PMK (from material exchanged during the TLS handshake).
 
-8.       The authentication server sends the PMK to the authenticator (AP).
+8.        The authentication server sends the PMK to the authenticator (AP).
 
-9.       The EAP server then must respond with an EAP-Success message.
+9.        The EAP server then must respond with an EAP-Success message.
 
 ### Objective
 
