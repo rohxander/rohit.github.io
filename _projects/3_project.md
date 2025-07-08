@@ -44,24 +44,24 @@ expected results. However, PIO mode engages the Host processor to access the con
 external serial Flash memory using a bit-band method through the transmit and receive data
 registers.
 
-In my role at Microchip Technology, I led the validation of **QSPI/SQI flash interfaces** on the WFI32 module, targeting the **SST26 series flash memory**. This project focused on enabling and optimizing high-speed flash operations—deep insights from the **60001244C QSPI reference manual** and the **SST26 datasheet** guided every step :contentReference[oaicite:1]{index=1}.
+In my role at Microchip Technology, I led the validation of **QSPI/SQI flash interfaces** on the WFI32 module, targeting the **SST26 series flash memory**. This project focused on enabling and optimizing high-speed flash operations—deep insights from the **60001244C QSPI reference manual** and the **SST26 datasheet** guided every step.
 
 ---
 
 ### Project Objective
 
 - Enable SST26 flash to operate in **Quad I/O (SQI) mode** by configuring the MCU's registers
-- Perform read/write/erase operations using SQI protocol, per the SST26 datasheet guidelines :contentReference[oaicite:2]{index=2}
+- Perform read/write/erase operations using SQI protocol, per the SST26 datasheet guidelines
 - Benchmark performance: assess clock speeds, dummy cycles, and quad lane efficiency
 
 ---
 
 ### Development Process
 
-I began by studying the SST26 protocol diagrams and command structure—ensuring compatibility with **SPI modes 0 and 3** :contentReference[oaicite:3]{index=3}. Using MPLAB Harmony’s SQI driver, I:
+I began by studying the SST26 protocol diagrams and command structure—ensuring compatibility with **SPI modes 0 and 3**. Using MPLAB Harmony’s SQI driver, I:
 
 - Issued SQI enable commands to switch from SPI to quad-mode operations
-- Conducted block write/read tests and verified integrity using the peripheral library’s SQI APIs :contentReference[oaicite:4]{index=4}
+- Conducted block write/read tests and verified integrity using the peripheral library’s SQI APIs
 - Tuned clock timing, added dummy cycles and adjusted modes, resolving undocumented timing quirks through oscilloscope analysis
 
 ---

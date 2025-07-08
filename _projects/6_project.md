@@ -42,7 +42,7 @@ The board transmitted a **5x5 matrix** over UART representing capacitive touch d
 ### Tools & Platforms
 
 - **QT8 Explained Pro** (5x5 capacitive touch board)
-- **Python** with `PySerial`, `Tkinter`
+- **Python** with `PySerial`, `MatplotLib`,
 - **Tera Term**, custom UART protocol
 - Windows PC, Serial-to-USB interface
 
