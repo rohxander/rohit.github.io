@@ -1,78 +1,45 @@
 ---
 layout: page
-title: Wi-Fi Enterprise Security Applicaiton
-description: Implemented WPA2/WPA3 enterprise protocols using TLS/TTLS with FreeRADIUS integration on WFI32 modules.
-img: assets/img/tls_1_3.png
+title: Wi‑Fi Enterprise Security Application
+description: Implemented WPA2/WPA3 Enterprise (TTLS/TLS/PEAP) with FreeRADIUS integration on WFI32 modules.
+img: assets/img/tls_enterprise.png
 importance: 2
 category: Industrial
 related_publications: false
 ---
 
-At Microchip Technology, I was responsible for validating **hardware UART flow control (RTS/CTS)** for high-speed embedded communication. The target was to test flow control performance across multiple configurations and baud rates, with reliable operation expected up to 10 Mbps. During testing, I was able to verify functionality up to **25 Mbps**.
+At Microchip Technology, I led the design and implementation of Wi‑Fi Enterprise security on WFI32 modules, enabling seamless WPA2/WPA3 connections via TLS‑based EAP (TTLS/PEAP) and FreeRADIUS integration.
 
----
+### Objective
 
-### Project Objective
+Enable WFI32 modules to authenticate securely over enterprise networks using 802.1X EAP methods, suitable for corporate environments with username/password or certificate-based security.
 
-- Confirm RTS/CTS-based UART communication stability under high-speed, full-duplex conditions
-- Evaluate communication behavior on dedicated UART pins vs PPS-configured pins
-- Provide structured test applications to support validation at scale
+### Key Workflows
 
----
+- **Enabled TLS, TTLS, and PEAP** using MPLAB Harmony’s Wi‑Fi System Service :contentReference[oaicite:1]{index=1}
+- **Configured station-mode EAP** with settings for CA certificate, server name, user identity, and private key :contentReference[oaicite:2]{index=2}
+- Integrated **FreeRADIUS** to support both EAP‑TTLS/MSCHAPv2 and EAP‑PEAP tunnels :contentReference[oaicite:3]{index=3}
+- Set up TLS handshake (Phase 1) and user authentication (Phase 2), including certificate‑based EAP‑TLS and username/password EAP‑TTLS/PEAP flows :contentReference[oaicite:4]{index=4}
 
-### Development Process
+### My Role
 
-Initial testing was conducted using **Tera Term**, but its fixed baud rate settings limited practical testing. I moved to **PuTTY**, which supported higher speeds, but started failing consistently beyond 2.5 Mbps. This is when I introduced the **Saleae Logic Analyzer** for more precise signal monitoring, and later used **digital oscilloscopes** for final frequency measurements.
+- Developed Harmony configuration scripts for station-mode enterprise setups
+- Generated and loaded CA/client certificates into firmware as C arrays or PEM/DER mappings
+- Automated connection tests through secure exchange and PMK validation
+- Documented FreeRADIUS server-side steps (OpenSSL cert creation, `eap` config) :contentReference[oaicite:5]{index=5}
+- Performed debugging via UART logs, accrediting successful EAP exchanges and IP assignment
 
-To test CTS input handling, I initially grounded the CTS line on the MCU and monitored UART behavior. This confirmed that the MCU paused and resumed transmission based on CTS state — validating the handshake logic.
+### Outcome
 
-To enable bidirectional, high-speed flow control testing, I programmed **two WFI32E02 boards**:
-
-- One board acted as the initiator and echo responder
-- The other purely as a repeater
-- Test characters (`'U'`, binary `01010101`) were used for clean waveform visibility and timing analysis
-
-This setup eliminated the PC as a bottleneck and allowed direct MCU-to-MCU validation.
-
----
-
-### Testing Configurations & Observations
-
-- Baud rates tested from 9600 bps up to 25 Mbps
-- Clock settings were adjusted to support different speed targets
-- UART control registers were reconfigured for high-speed mode and flow control enablement
-- Both **dedicated UART pins** and **PPS(Peripheral Pin Select)-configured pins** were tested
-
-  - As expected, **PPS pins supported speeds up to 5 Mbps** (per device spec)
-  - **Dedicated pins maintained full signal stability at 25 Mbps**
-
-  [Note : The Peripheral Pin Select (PPS) feature allows a design to choose the pins used by many of the devices digital peripheral]
-
-When attempting to probe RTS/CTS lines with the logic analyzer, unexpected grounding issues affected readings. However, functionality was still verified through **manual wire disconnection tests**, where communication paused and resumed without data loss — confirming proper hardware handshake operation.
-
----
-
-### Final Deliverables
-
-The test routines were handed over to the **Module Validation Team** for further environmental and stress testing, including evaluation across temperature variations and extended runtime scenarios.
-
----
+Successfully demonstrated WFI32 module connections under multiple enterprise scenarios (EAP‑TTLS, EAP‑PEAP, EAP‑TLS), verified with test server logs and network access confirmation.
 
 ### Tools & Platforms
 
-PIC32, WFI32E02  
-MPLAB X IDE, Harmony v3  
-PuTTY, Saleae Logic Analyzer  
-Digital Oscilloscopes, FTDI Cables
+- **Hardware**: WFI32E01/E02 modules, MPLAB Harmony–supported Wi‑Fi System Service
+- **Software**: MPLAB X IDE, Harmony 3, FreeRADIUS, OpenSSL, wpa_supplicant
+- **Debugging**: UART logs, network packet captures, TLS handshake traces
 
 ---
 
-<div class="row">
-  <div class="col-sm mt-3 mt-md-0">
-    {% include figure.liquid loading="eager" path="assets/img/WFI32E02.png" title="WFI32E02 Development Board" class="img-fluid rounded z-depth-1" %}
-  </div>
-</div>
-
-<div class="caption">
-  WFI32E02 board used for UART flow control testing and full-duplex setup.
-</div>
+Let me know if you'd like to include images of the Wi‑Fi System Service UI, RADIUS daemon logs, or network trace snippets next.
+::contentReference[oaicite:6]{index=6}
