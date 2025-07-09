@@ -140,4 +140,4 @@ As IoT systems scale and smart environments become the norm, RSSI fingerprinting
 
 ---
 
-_For feedback, collaboration, or to share your own fingerprinting deployment stories, feel free to reach out on [LinkedIn](#) or [GitHub](#)._
+_For feedback, collaboration, or to share your own fingerprinting deployment stories, feel free to reach out on [LinkedIn](https://www.linkedin.com/in/rohitprakashmk/) or [GitHub](https://github.com/rohxander)._
