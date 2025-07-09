@@ -44,11 +44,11 @@ ninja.data = [{
               handler: () => {
                 window.location.href = "/blog/";
               },
-            },{id: "post-visions-for-6g-towards-intelligent-resilient-and-ubiquitous-communication",
+            },{id: "post-visions-for-6g-building-smarter-and-more-connected-networks",
         
-          title: "Visions for 6G: Towards Intelligent, Resilient, and Ubiquitous Communication",
+          title: "Visions for 6G: Building Smarter and More Connected Networks",
         
-        description: "A forward-looking exploration of 6G technologies and architectural principles—focusing on intelligence, sensing, sustainability, and global equity.",
+        description: "A simple and clear explanation of what 6G networks aim to achieve, and how they will change the way we connect and communicate in the future.",
         section: "Posts",
         handler: () => {
           
