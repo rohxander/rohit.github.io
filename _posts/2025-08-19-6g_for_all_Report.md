@@ -181,4 +181,4 @@ This project was developed during the *EELISA "6G for All"* Summer School, guide
 
 ---
 
-_Want to know more about 6G research or emergency network design? Let's connect on [LinkedIn](https://www.linkedin.com/in/rohitprakashmk/) or explore [GitHub](https://github.com/rohxander)._  
+_Want to know more about 6G research or emergency network design? Let's connect on [LinkedIn] (https://www.linkedin.com/in/rohitprakashmk/) or explore [GitHub](https://github.com/rohxander)._  
