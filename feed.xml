@@ -1,1 +1,591 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://rohxander.github.io/feed.xml" rel="self" type="application/atom+xml"/><link href="https://rohxander.github.io/" rel="alternate" type="text/html" hreflang="en"/><updated>2025-07-09T17:29:43+00:00</updated><id>https://rohxander.github.io/feed.xml</id><title type="html">Rohit Prakash</title><subtitle>Portfolio of Rohit Prakash – M.Sc. ICT student at FAU Erlangen. Passionate about embedded systems, IoT, AI, and making a real-world impact. </subtitle><entry><title type="html">RSSI Fingerprinting in IoT: A Modern Approach to Indoor Localization</title><link href="https://rohxander.github.io/blog/2025/RSSI-Fingerprinting-in-IoT/" rel="alternate" type="text/html" title="RSSI Fingerprinting in IoT: A Modern Approach to Indoor Localization"/><published>2025-07-08T10:00:00+00:00</published><updated>2025-07-08T10:00:00+00:00</updated><id>https://rohxander.github.io/blog/2025/RSSI%20Fingerprinting%20in%20IoT</id><content type="html" xml:base="https://rohxander.github.io/blog/2025/RSSI-Fingerprinting-in-IoT/"><![CDATA[<h2 id="introduction">Introduction</h2> <p>With the rise of the Internet of Things (IoT), <strong>localization technologies</strong> have become vital for enabling smarter environments—from asset tracking to context-aware automation. While <strong>Global Navigation Satellite Systems (GNSS)</strong> are the go-to for outdoor scenarios, their limitations indoors (e.g., power consumption, signal blockage) necessitate alternative approaches.</p> <p>Enter <strong>Received Signal Strength Indicator (RSSI)</strong>-based localization. Despite its inherent challenges, <strong>RSSI fingerprinting</strong> offers a viable solution for <strong>low-cost, infrastructure-light, indoor positioning</strong>. This article explores the practical, algorithmic, and signal-theoretic insights behind RSSI fingerprinting and its place in modern IoT systems.</p> <hr/> <h2 id="why-gnss-isnt-ideal-for-iot">Why GNSS Isn’t Ideal for IoT</h2> <p>Although GNSS technologies like GPS and Galileo are excellent for wide-area coverage, they face multiple obstacles in IoT scenarios:</p> <ul> <li><strong>High power consumption</strong>—undesirable for battery-operated devices</li> <li><strong>Poor indoor performance</strong> due to blocked line-of-sight</li> <li><strong>Unnecessary global precision</strong> when only local positioning is needed</li> <li><strong>Slow fix times</strong> and <strong>increased system complexity</strong></li> </ul> <p>This has fueled the development of <strong>Local Positioning Systems (LPS)</strong> that focus on <strong>self-positioning</strong> and <strong>remote active positioning</strong>—both of which leverage RSSI-based methods:contentReference[oaicite:0]{index=0}.</p> <hr/> <h2 id="the-basics-of-rssi-based-localization">The Basics of RSSI-Based Localization</h2> <p>RSSI measures signal power received at an anchor node. Theoretically, the <strong>distance</strong> from the transmitter can be inferred using <strong>path-loss models</strong>, such as:</p> <p>[ d̂ = d<em>0 \cdot 10^{\frac{P</em>{RX} - P<em>{TX} - G</em>{TX} - G_{RX}}{10n}} ]</p> <p>However, <strong>multipath fading, shadowing, and environmental noise</strong> make direct ranging unreliable:contentReference[oaicite:1]{index=1}:contentReference[oaicite:2]{index=2}.</p> <h3 id="strengths">Strengths:</h3> <ul> <li>Low-cost hardware (e.g., Wi-Fi/Bluetooth)</li> <li>Real-time, scalable</li> <li>No extra infrastructure</li> </ul> <h3 id="limitations">Limitations:</h3> <ul> <li>High variance in RSSI readings</li> <li>Sensitivity to antenna patterns, node placement, and channel conditions</li> </ul> <hr/> <h2 id="from-ranging-to-fingerprinting">From Ranging to Fingerprinting</h2> <p>To overcome unpredictability in signal behavior, <strong>RSSI fingerprinting</strong> replaces modeling with <strong>measurement-based localization</strong>.</p> <h3 id="two-phases">Two Phases:</h3> <ol> <li><strong>Training Phase</strong>: RSSI patterns (fingerprints) are recorded at known positions.</li> <li><strong>Localization Phase</strong>: Incoming RSSI vectors are matched against the <strong>Correlation Database (CDB)</strong>.</li> </ol> <p>Each fingerprint ( F ) is a matrix of anchor IDs and their RSSI values:</p> <p>[ F = \begin{bmatrix} ID_1 &amp; RSS_1 <br/> \vdots &amp; \vdots <br/> ID_n &amp; RSS_n \end{bmatrix} ]</p> <p>The system estimates the user’s position by minimizing the <strong>Euclidean or penalized distance</strong> between observed and stored fingerprints:contentReference[oaicite:3]{index=3}.</p> <hr/> <h2 id="enhancing-accuracy">Enhancing Accuracy</h2> <h3 id="-database-construction">➤ <strong>Database Construction</strong></h3> <ul> <li><strong>Field measurements</strong> yield highest accuracy but are labor-intensive.</li> <li><strong>Propagation modeling</strong> can be faster, but less precise.</li> <li><strong>Hybrid approaches</strong> combine both for balance.</li> </ul> <h3 id="-algorithmic-improvements">➤ <strong>Algorithmic Improvements</strong></h3> <ul> <li><strong>Penalty terms</strong> account for unmatched anchor IDs.</li> <li><strong>Weighted K-Nearest Neighbors</strong> improve estimates via signal-aware averaging.</li> <li><strong>Outlier rejection</strong> ensures robust position estimates in noisy environments.</li> </ul> <hr/> <h2 id="machine-learning-for-rssi-fingerprinting">Machine Learning for RSSI Fingerprinting</h2> <p>Neural networks can learn complex, non-linear mappings from RSSI vectors to positions:</p> <ul> <li><strong>Input</strong>: RSSI from multiple anchors</li> <li><strong>Output</strong>: Estimated location (x, y)</li> <li><strong>Model</strong>: Feedforward MLPs with dropout/regularization</li> </ul> <p><strong>Advantages</strong>:</p> <ul> <li>Noise resilience</li> <li>Scalability</li> <li>Improved generalization</li> </ul> <p><strong>Challenges</strong>:</p> <ul> <li>Requires large, diverse training data</li> <li>Susceptible to overfitting without proper tuning</li> </ul> <hr/> <h2 id="real-world-performance-and-apis">Real-World Performance and APIs</h2> <h3 id="expected-accuracy">Expected Accuracy:</h3> <table> <thead> <tr> <th>Environment</th> <th>Field Measured</th> <th>Model Predicted</th> </tr> </thead> <tbody> <tr> <td>Indoor (Office)</td> <td>0.5–2 m</td> <td>2–5 m</td> </tr> <tr> <td>Outdoor</td> <td>10–50 m</td> <td>10–100 m</td> </tr> </tbody> </table> <p>Services like Google Geolocation API use RSSI fingerprinting at scale, requiring only a list of MAC addresses and signal strengths to return accurate coordinates:contentReference[oaicite:4]{index=4}.</p> <hr/> <h2 id="final-thoughts">Final Thoughts</h2> <p><strong>RSSI fingerprinting</strong> bridges the gap between cost-effective deployment and usable indoor localization. With its integration into mobile APIs and its synergy with <strong>machine learning</strong>, fingerprinting transforms unreliable signal metrics into <strong>actionable, spatial insights</strong>.</p> <p>But this approach is not without nuance. It requires:</p> <ul> <li>Intelligent system design</li> <li>Awareness of fading/channel effects</li> <li>Continuous calibration and refinement</li> </ul> <p>As IoT systems scale and smart environments become the norm, RSSI fingerprinting offers a <strong>pragmatic, powerful localization layer</strong> that is well-aligned with the needs of modern connectivity.</p> <hr/> <p><em>For feedback, collaboration, or to share your own fingerprinting deployment stories, feel free to reach out on <a href="https://www.linkedin.com/in/rohitprakashmk/">LinkedIn</a> or <a href="https://github.com/rohxander">GitHub</a>.</em></p>]]></content><author><name></name></author><category term="IoT"/><category term="Localization"/><category term="Wireless Systems"/><category term="RSSI"/><category term="Fingerprinting"/><category term="Indoor Localization"/><category term="IoT"/><category term="Channel Models"/><category term="Machine Learning"/><summary type="html"><![CDATA[An exploration of RSSI-based localization and fingerprinting techniques—highlighting methods, challenges, and intelligent enhancements for future IoT systems.]]></summary></entry><entry><title type="html">Visions for 6G: Building Smarter and More Connected Networks</title><link href="https://rohxander.github.io/blog/2025/visions-for-6g/" rel="alternate" type="text/html" title="Visions for 6G: Building Smarter and More Connected Networks"/><published>2025-07-08T10:00:00+00:00</published><updated>2025-07-08T10:00:00+00:00</updated><id>https://rohxander.github.io/blog/2025/visions-for-6g</id><content type="html" xml:base="https://rohxander.github.io/blog/2025/visions-for-6g/"><![CDATA[<h2 id="introduction">Introduction</h2> <p>6G is the next big step in wireless communication after 5G. But it’s not just about faster internet. It’s about making networks <strong>smarter, more reliable, and available everywhere</strong>—even in places with no connection today.</p> <p>6G is being designed to help with things like:</p> <ul> <li>Real-time applications (like remote surgery or self-driving cars)</li> <li>Smarter cities and industries</li> <li>Better internet in remote or rural areas</li> <li>Safer communication during disasters</li> </ul> <p>Let’s explore how 6G plans to make this possible.</p> <hr/> <h2 id="a-new-kind-of-network-focused-on-people-not-just-towers">A New Kind of Network: Focused on People, Not Just Towers</h2> <p>Most networks today are built around towers (called “cells”). Each user connects to a tower in their area. But this can lead to weak signals or dropped connections at the edges.</p> <p>6G will move to a <strong>user-focused design</strong>. That means:</p> <ul> <li>Devices will be served by many small antennas working together.</li> <li>The network will adjust based on where the user is and what they need.</li> <li>This improves connection strength and stability.</li> </ul> <hr/> <h2 id="sensing-and-communication-combined">Sensing and Communication Combined</h2> <p>In 6G, networks won’t just send and receive data—they’ll also <strong>sense the environment</strong>. This is called <strong>ISAC: Integrated Sensing and Communication</strong>.</p> <p>What this means:</p> <ul> <li>Devices will know where they are more accurately (within a few centimeters).</li> <li>The network can detect motion, objects, or changes in the surroundings.</li> <li>This is useful for robots, self-driving cars, or smart factories.</li> </ul> <hr/> <h2 id="smarter-networks-with-artificial-intelligence">Smarter Networks with Artificial Intelligence</h2> <p>6G will use <strong>AI (Artificial Intelligence)</strong> to manage and improve the network automatically.</p> <p>Here’s how AI will help:</p> <ul> <li>Predicting where users are moving and adjusting connections</li> <li>Choosing the best antennas or signal direction</li> <li>Saving energy by turning off parts of the network when not needed</li> </ul> <p>In short, 6G networks will <strong>learn and adapt</strong> in real time.</p> <hr/> <h2 id="connecting-the-unconnected-using-satellites-and-drones">Connecting the Unconnected: Using Satellites and Drones</h2> <p>To provide internet <strong>everywhere</strong>, 6G will use not just ground towers, but also:</p> <ul> <li><strong>Satellites in space</strong></li> <li><strong>Drones or high-flying balloons</strong></li> </ul> <p>This is called <strong>NTN: Non-Terrestrial Networks</strong>.</p> <p>These technologies can:</p> <ul> <li>Bring internet to rural villages, oceans, or disaster zones</li> <li>Help during emergencies when ground networks are damaged</li> <li>Make sure no one is left behind in the digital world</li> </ul> <hr/> <h2 id="designed-to-save-energy-and-be-sustainable">Designed to Save Energy and Be Sustainable</h2> <p>As more devices get connected, energy use becomes a big concern.</p> <p>6G will be <strong>built for energy efficiency</strong>, meaning:</p> <ul> <li>Devices will use very little power to stay connected</li> <li>The network will sleep when not needed</li> <li>Smarter scheduling will reduce waste</li> </ul> <p>This is important for smart homes, sensors in cities, and the environment.</p> <hr/> <h2 id="a-simple-look-at-the-future-network">A Simple Look at the Future Network</h2> <div class="row mt-3 mb-2"> <div class="col-sm mt-3 mt-md-0 text-center"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/6g-vision-diagram-480.webp 480w,/assets/img/6g-vision-diagram-800.webp 800w,/assets/img/6g-vision-diagram-1400.webp 1400w," type="image/webp" sizes="95vw"/> <img src="/assets/img/6g-vision-diagram.png" class="img-fluid rounded z-depth-1" width="100%" height="auto" data-zoomable="" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"/> </picture> </figure> </div> </div> <div class="caption"> A future 6G network using satellites, drones, sensing, and AI to connect people everywhere. </div> <hr/> <h2 id="conclusion">Conclusion</h2> <p>6G is not just about speed. It’s about building <strong>networks that are smart, aware, and helpful</strong>—networks that:</p> <ul> <li>Think for themselves</li> <li>Support safety, health, and education</li> <li>Reach places that were never connected before</li> </ul> <p>As we look ahead to 2030 and beyond, 6G has the potential to truly change how people live, work, and communicate—<strong>for everyone, everywhere</strong>.</p> <hr/> <p><em>Want to talk about future networks or smart technologies? Feel free to connect via <a href="https://github.com/rohxander">GitHub</a> or <a href="https://www.linkedin.com/in/rohitprakashmk/">LinkedIn</a>.</em></p>]]></content><author><name></name></author><category term="6G"/><category term="Future Technology"/><category term="6G"/><category term="Future Networks"/><category term="AI"/><category term="Sensing"/><category term="Satellites"/><category term="Energy Efficiency"/><summary type="html"><![CDATA[A simple and clear explanation of what 6G networks aim to achieve, and how they will change the way we connect and communicate in the future.]]></summary></entry></feed>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://rohxander.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rohxander.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2025-08-19T13:14:24+00:00</updated><id>https://rohxander.github.io/feed.xml</id><title type="html">Rohit Prakash</title><subtitle>Portfolio of Rohit Prakash – M.Sc. ICT student at FAU Erlangen. Passionate about embedded systems, IoT, AI, and making a real-world impact.
+</subtitle><entry><title type="html">DREAM: A 6G-Ready Architecture for Disaster Response</title><link href="https://rohxander.github.io/blog/2025/6g_for_all_Report/" rel="alternate" type="text/html" title="DREAM: A 6G-Ready Architecture for Disaster Response" /><published>2025-08-19T09:00:00+00:00</published><updated>2025-08-19T09:00:00+00:00</updated><id>https://rohxander.github.io/blog/2025/6g_for_all_Report</id><content type="html" xml:base="https://rohxander.github.io/blog/2025/6g_for_all_Report/"><![CDATA[<h2 id="introduction">Introduction</h2>
+
+<p>When disasters strike—earthquakes, floods, wildfires—communication networks often fail first. Base stations go down, fiber cables snap, and towers overload. In these critical hours, reliable communication can save lives, yet the existing infrastructure struggles to cope.</p>
+
+<p><strong>DREAM (Disaster Response and Emergency Actions for Mitigation)</strong> is a 6G-ready architecture designed to provide <strong>rapid, minimum-viable communication</strong> in disaster-hit areas. Built using 5G-Advanced features and shaped by insights from the <em>EELISA “6G for All”</em> Summer School, DREAM aims to restore <strong>alerts, voice, and basic data</strong> within the <strong>first hour</strong>, then scale as resources arrive.</p>
+
+<hr />
+
+<h2 id="why-current-systems-fall-short">Why Current Systems Fall Short</h2>
+
+<p>Today’s disaster recovery often involves:</p>
+
+<ul>
+  <li>Portable base stations on trucks</li>
+  <li>Satellite phones for backhaul</li>
+  <li>Public alerts via SMS, radio, and social media</li>
+  <li>Volunteers setting up ad-hoc Wi-Fi</li>
+</ul>
+
+<p>These are useful—but <strong>slow</strong>, fragile, and lack coordination. A single broken fiber link or congested cell tower can isolate survivors and responders alike.</p>
+
+<hr />
+
+<h2 id="the-dream-vision-fast-layered-intelligent">The DREAM Vision: Fast, Layered, Intelligent</h2>
+
+<p>DREAM is designed to <strong>work fast, remain resilient, and scale</strong>. Its key principles:</p>
+
+<ul>
+  <li><strong>Speed over perfection</strong>: Get basic service up within 1 hour.</li>
+  <li><strong>3D access</strong>: Use ground towers, UAVs, HAPS, and satellites.</li>
+  <li><strong>Multiple backhauls</strong>: Combine fiber, microwave, and satellite.</li>
+  <li><strong>Edge AI</strong>: Run detection, localisation, and alerts locally.</li>
+  <li><strong>Standards-first</strong>: Interoperable with public/private 5G networks.</li>
+</ul>
+<div class="row mt-3 mb-2">
+  <div class="col-sm mt-3 mt-md-0 text-center">
+    
+
+
+
+<figure>
+  <picture>
+    <!-- Auto scaling with imagemagick -->
+    <!--
+      See https://www.debugbear.com/blog/responsive-images#w-descriptors-and-the-sizes-attribute and
+      https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images for info on defining 'sizes' for responsive images
+    -->
+    
+      
+        <source class="responsive-img-srcset" srcset="/assets/img/DREAM%20ARCHITECTURAL%20DIAGRAM-480.webp 480w,/assets/img/DREAM%20ARCHITECTURAL%20DIAGRAM-800.webp 800w,/assets/img/DREAM%20ARCHITECTURAL%20DIAGRAM-1400.webp 1400w," type="image/webp" sizes="95vw" />
+      
+    
+    <img src="/assets/img/DREAM%20ARCHITECTURAL%20DIAGRAM.png" class="img-fluid rounded z-depth-1" width="100%" height="auto" data-zoomable="" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+  </picture>
+
+  
+</figure>
+
+  </div>
+</div>
+
+<div class="caption">
+  DREAM’s layered 3D access: satellites, HAPS, UAV swarms, and ground teams restoring connectivity in disasters.
+</div>
+
+<hr />
+
+<h2 id="dreams-technical-layers">DREAM’s Technical Layers</h2>
+
+<h3 id="️-three-dimensional-coverage">🛰️ Three-Dimensional Coverage</h3>
+
+<p>To reach areas blocked by rubble or terrain:</p>
+
+<ul>
+  <li>Portable 5G radios on ground vehicles</li>
+  <li>Drones (UAVs) flying over streets</li>
+  <li>HAPS balloons/aircraft from the stratosphere</li>
+  <li>LEO satellites for backhaul and coverage</li>
+</ul>
+<div class="row mt-3 mb-2">
+  <div class="col-sm mt-3 mt-md-0 text-center">
+    
+
+
+
+<figure>
+  <picture>
+    <!-- Auto scaling with imagemagick -->
+    <!--
+      See https://www.debugbear.com/blog/responsive-images#w-descriptors-and-the-sizes-attribute and
+      https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images for info on defining 'sizes' for responsive images
+    -->
+    
+      
+        <source class="responsive-img-srcset" srcset="/assets/img/RIS-480.webp 480w,/assets/img/RIS-800.webp 800w,/assets/img/RIS-1400.webp 1400w," type="image/webp" sizes="95vw" />
+      
+    
+    <img src="/assets/img/RIS.png" class="img-fluid rounded z-depth-1" width="100%" height="auto" data-zoomable="" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+  </picture>
+
+  
+</figure>
+
+  </div>
+</div>
+
+<div class="caption">
+  RIS-equipped drone redirecting signals into shadowed areas during disaster recovery.
+</div>
+<h3 id="-multi-path-backhaul">🔁 Multi-Path Backhaul</h3>
+
+<p>DREAM uses multiple backhaul methods <strong>simultaneously</strong>. If one fails, the others take over:</p>
+
+<ul>
+  <li>Fiber (if intact)</li>
+  <li>Microwave</li>
+  <li>NR-NTN via LEO satellites</li>
+</ul>
+<div class="row mt-3 mb-2">
+  <div class="col-sm mt-3 mt-md-0 text-center">
+    
+
+
+
+<figure>
+  <picture>
+    <!-- Auto scaling with imagemagick -->
+    <!--
+      See https://www.debugbear.com/blog/responsive-images#w-descriptors-and-the-sizes-attribute and
+      https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images for info on defining 'sizes' for responsive images
+    -->
+    
+      
+        <source class="responsive-img-srcset" srcset="/assets/img/NTN-480.webp 480w,/assets/img/NTN-800.webp 800w,/assets/img/NTN-1400.webp 1400w," type="image/webp" sizes="95vw" />
+      
+    
+    <img src="/assets/img/NTN.png" class="img-fluid rounded z-depth-1" width="100%" height="auto" data-zoomable="" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+  </picture>
+
+  
+</figure>
+
+  </div>
+</div>
+
+<div class="caption">
+  NTN backhaul using satellites and HAPS to maintain connectivity when roads and fibre are cut.
+</div>
+<h3 id="-sidelink--ris-reach-the-unreachable">📡 Sidelink &amp; RIS: Reach the Unreachable</h3>
+
+<ul>
+  <li><strong>Sidelink</strong> lets phones relay messages directly (even if one is out of coverage).</li>
+  <li><strong>RIS (Reconfigurable Intelligent Surfaces)</strong> on drones can bend signals around corners to reach shadowed areas.</li>
+</ul>
+<div class="row mt-3 mb-2">
+  <div class="col-sm mt-3 mt-md-0 text-center">
+    
+
+
+
+<figure>
+  <picture>
+    <!-- Auto scaling with imagemagick -->
+    <!--
+      See https://www.debugbear.com/blog/responsive-images#w-descriptors-and-the-sizes-attribute and
+      https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images for info on defining 'sizes' for responsive images
+    -->
+    
+      
+        <source class="responsive-img-srcset" srcset="/assets/img/SIDELINK%20AND%20ADHOC-480.webp 480w,/assets/img/SIDELINK%20AND%20ADHOC-800.webp 800w,/assets/img/SIDELINK%20AND%20ADHOC-1400.webp 1400w," type="image/webp" sizes="95vw" />
+      
+    
+    <img src="/assets/img/SIDELINK%20AND%20ADHOC.png" class="img-fluid rounded z-depth-1" width="100%" height="auto" data-zoomable="" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+  </picture>
+
+  
+</figure>
+
+  </div>
+</div>
+
+<div class="caption">
+  Sidelink relays enabling message delivery from unreachable areas to rescue teams during disaster response.
+</div>
+<h3 id="-local-ai--edge-computing">🧠 Local AI &amp; Edge Computing</h3>
+
+<p>Even without the internet, local edge servers can:</p>
+
+<ul>
+  <li>Detect outages or clusters of offline devices</li>
+  <li>Assist indoor positioning using PRS</li>
+  <li>Fuse drone + sensor data into a <strong>live situational map</strong></li>
+</ul>
+<div class="row mt-3 mb-2">
+  <div class="col-sm mt-3 mt-md-0 text-center">
+    
+
+
+
+<figure>
+  <picture>
+    <!-- Auto scaling with imagemagick -->
+    <!--
+      See https://www.debugbear.com/blog/responsive-images#w-descriptors-and-the-sizes-attribute and
+      https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images for info on defining 'sizes' for responsive images
+    -->
+    
+      
+        <source class="responsive-img-srcset" srcset="/assets/img/BEAMFORMING-480.webp 480w,/assets/img/BEAMFORMING-800.webp 800w,/assets/img/BEAMFORMING-1400.webp 1400w," type="image/webp" sizes="95vw" />
+      
+    
+    <img src="/assets/img/BEAMFORMING.png" class="img-fluid rounded z-depth-1" width="100%" height="auto" data-zoomable="" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+  </picture>
+
+  
+</figure>
+
+  </div>
+</div>
+
+<div class="caption">
+  Beamforming strategy.
+</div>
+<hr />
+
+<h2 id="quick-setup-gradual-expansion">Quick Setup, Gradual Expansion</h2>
+
+<p>DREAM’s rollout happens in <strong>stages</strong>:</p>
+
+<ul>
+  <li>
+    <p><strong>0–6 Hours</strong>: One radio + portable 5G core + satellite backhaul<br />
+→ Minimum alerts, voice, GPS-less location</p>
+  </li>
+  <li>
+    <p><strong>6–24 Hours</strong>: More radios, drones for coverage, edge AI setup<br />
+→ Sidelink relays, dashboards, basic analytics</p>
+  </li>
+  <li>
+    <p><strong>24–72 Hours</strong>: Optimisation<br />
+→ Secure L3 interconnect, public slice integration, power efficiency</p>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="backed-by-the-sdgs">Backed by the SDGs</h2>
+
+<p>DREAM supports multiple UN Sustainable Development Goals:</p>
+
+<ul>
+  <li><strong>SDG 3</strong> – Health: enable hospital comms in &lt;60 min</li>
+  <li><strong>SDG 9</strong> – Infrastructure: redundancy, no single points of failure</li>
+  <li><strong>SDG 11</strong> – Cities: geofenced alerts, urban resilience</li>
+  <li><strong>SDG 13</strong> – Climate: power-aware operation with minimal waste</li>
+</ul>
+
+<hr />
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>DREAM is not a concept—it’s a <strong>deployable blueprint</strong>.</p>
+
+<ul>
+  <li>Alerts and responder calls in under an hour</li>
+  <li>Works with commercial phones and standard 5G tools</li>
+  <li>Grows stronger as help arrives</li>
+  <li>Survives the first 72 hours, when communication matters most</li>
+</ul>
+
+<p>This project was developed during the <em>EELISA “6G for All”</em> Summer School, guided by real-world lectures on <strong>Open RAN</strong>, <strong>Virtualization</strong>, <strong>NTN</strong>, and <strong>JC&amp;S</strong>. It’s a vision that turns 6G from a futuristic buzzword into a <strong>lifesaving tool</strong>.</p>
+
+<hr />
+
+<p><em>Want to know more about 6G research or emergency network design? Let’s connect on <a href="https://www.linkedin.com/in/rohitprakashmk/">LinkedIn</a> or explore <a href="https://github.com/rohxander">GitHub</a>.</em></p>]]></content><author><name></name></author><category term="6G" /><category term="Research" /><category term="Emergency Tech" /><category term="6G" /><category term="Emergency Communication" /><category term="NTN" /><category term="AI" /><category term="Edge Computing" /><category term="Sidelink" /><summary type="html"><![CDATA[How 6G concepts can be used to rapidly restore critical communication networks during natural disasters.]]></summary></entry><entry><title type="html">RSSI Fingerprinting in IoT: A Modern Approach to Indoor Localization</title><link href="https://rohxander.github.io/blog/2025/RSSI-Fingerprinting-in-IoT/" rel="alternate" type="text/html" title="RSSI Fingerprinting in IoT: A Modern Approach to Indoor Localization" /><published>2025-07-08T10:00:00+00:00</published><updated>2025-07-08T10:00:00+00:00</updated><id>https://rohxander.github.io/blog/2025/RSSI%20Fingerprinting%20in%20IoT</id><content type="html" xml:base="https://rohxander.github.io/blog/2025/RSSI-Fingerprinting-in-IoT/"><![CDATA[<h2 id="introduction">Introduction</h2>
+
+<p>With the rise of the Internet of Things (IoT), <strong>localization technologies</strong> have become vital for enabling smarter environments—from asset tracking to context-aware automation. While <strong>Global Navigation Satellite Systems (GNSS)</strong> are the go-to for outdoor scenarios, their limitations indoors (e.g., power consumption, signal blockage) necessitate alternative approaches.</p>
+
+<p>Enter <strong>Received Signal Strength Indicator (RSSI)</strong>-based localization. Despite its inherent challenges, <strong>RSSI fingerprinting</strong> offers a viable solution for <strong>low-cost, infrastructure-light, indoor positioning</strong>. This article explores the practical, algorithmic, and signal-theoretic insights behind RSSI fingerprinting and its place in modern IoT systems.</p>
+
+<hr />
+
+<h2 id="why-gnss-isnt-ideal-for-iot">Why GNSS Isn’t Ideal for IoT</h2>
+
+<p>Although GNSS technologies like GPS and Galileo are excellent for wide-area coverage, they face multiple obstacles in IoT scenarios:</p>
+
+<ul>
+  <li><strong>High power consumption</strong>—undesirable for battery-operated devices</li>
+  <li><strong>Poor indoor performance</strong> due to blocked line-of-sight</li>
+  <li><strong>Unnecessary global precision</strong> when only local positioning is needed</li>
+  <li><strong>Slow fix times</strong> and <strong>increased system complexity</strong></li>
+</ul>
+
+<p>This has fueled the development of <strong>Local Positioning Systems (LPS)</strong> that focus on <strong>self-positioning</strong> and <strong>remote active positioning</strong>—both of which leverage RSSI-based methods:contentReference[oaicite:0]{index=0}.</p>
+
+<hr />
+
+<h2 id="the-basics-of-rssi-based-localization">The Basics of RSSI-Based Localization</h2>
+
+<p>RSSI measures signal power received at an anchor node. Theoretically, the <strong>distance</strong> from the transmitter can be inferred using <strong>path-loss models</strong>, such as:</p>
+
+<p>[
+d̂ = d<em>0 \cdot 10^{\frac{P</em>{RX} - P<em>{TX} - G</em>{TX} - G_{RX}}{10n}}
+]</p>
+
+<p>However, <strong>multipath fading, shadowing, and environmental noise</strong> make direct ranging unreliable:contentReference[oaicite:1]{index=1}:contentReference[oaicite:2]{index=2}.</p>
+
+<h3 id="strengths">Strengths:</h3>
+
+<ul>
+  <li>Low-cost hardware (e.g., Wi-Fi/Bluetooth)</li>
+  <li>Real-time, scalable</li>
+  <li>No extra infrastructure</li>
+</ul>
+
+<h3 id="limitations">Limitations:</h3>
+
+<ul>
+  <li>High variance in RSSI readings</li>
+  <li>Sensitivity to antenna patterns, node placement, and channel conditions</li>
+</ul>
+
+<hr />
+
+<h2 id="from-ranging-to-fingerprinting">From Ranging to Fingerprinting</h2>
+
+<p>To overcome unpredictability in signal behavior, <strong>RSSI fingerprinting</strong> replaces modeling with <strong>measurement-based localization</strong>.</p>
+
+<h3 id="two-phases">Two Phases:</h3>
+
+<ol>
+  <li><strong>Training Phase</strong>: RSSI patterns (fingerprints) are recorded at known positions.</li>
+  <li><strong>Localization Phase</strong>: Incoming RSSI vectors are matched against the <strong>Correlation Database (CDB)</strong>.</li>
+</ol>
+
+<p>Each fingerprint ( F ) is a matrix of anchor IDs and their RSSI values:</p>
+
+<p>[
+F = \begin{bmatrix}
+ID_1 &amp; RSS_1 <br />
+\vdots &amp; \vdots <br />
+ID_n &amp; RSS_n
+\end{bmatrix}
+]</p>
+
+<p>The system estimates the user’s position by minimizing the <strong>Euclidean or penalized distance</strong> between observed and stored fingerprints:contentReference[oaicite:3]{index=3}.</p>
+
+<hr />
+
+<h2 id="enhancing-accuracy">Enhancing Accuracy</h2>
+
+<h3 id="-database-construction">➤ <strong>Database Construction</strong></h3>
+
+<ul>
+  <li><strong>Field measurements</strong> yield highest accuracy but are labor-intensive.</li>
+  <li><strong>Propagation modeling</strong> can be faster, but less precise.</li>
+  <li><strong>Hybrid approaches</strong> combine both for balance.</li>
+</ul>
+
+<h3 id="-algorithmic-improvements">➤ <strong>Algorithmic Improvements</strong></h3>
+
+<ul>
+  <li><strong>Penalty terms</strong> account for unmatched anchor IDs.</li>
+  <li><strong>Weighted K-Nearest Neighbors</strong> improve estimates via signal-aware averaging.</li>
+  <li><strong>Outlier rejection</strong> ensures robust position estimates in noisy environments.</li>
+</ul>
+
+<hr />
+
+<h2 id="machine-learning-for-rssi-fingerprinting">Machine Learning for RSSI Fingerprinting</h2>
+
+<p>Neural networks can learn complex, non-linear mappings from RSSI vectors to positions:</p>
+
+<ul>
+  <li><strong>Input</strong>: RSSI from multiple anchors</li>
+  <li><strong>Output</strong>: Estimated location (x, y)</li>
+  <li><strong>Model</strong>: Feedforward MLPs with dropout/regularization</li>
+</ul>
+
+<p><strong>Advantages</strong>:</p>
+
+<ul>
+  <li>Noise resilience</li>
+  <li>Scalability</li>
+  <li>Improved generalization</li>
+</ul>
+
+<p><strong>Challenges</strong>:</p>
+
+<ul>
+  <li>Requires large, diverse training data</li>
+  <li>Susceptible to overfitting without proper tuning</li>
+</ul>
+
+<hr />
+
+<h2 id="real-world-performance-and-apis">Real-World Performance and APIs</h2>
+
+<h3 id="expected-accuracy">Expected Accuracy:</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Environment</th>
+      <th>Field Measured</th>
+      <th>Model Predicted</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Indoor (Office)</td>
+      <td>0.5–2 m</td>
+      <td>2–5 m</td>
+    </tr>
+    <tr>
+      <td>Outdoor</td>
+      <td>10–50 m</td>
+      <td>10–100 m</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Services like Google Geolocation API use RSSI fingerprinting at scale, requiring only a list of MAC addresses and signal strengths to return accurate coordinates:contentReference[oaicite:4]{index=4}.</p>
+
+<hr />
+
+<h2 id="final-thoughts">Final Thoughts</h2>
+
+<p><strong>RSSI fingerprinting</strong> bridges the gap between cost-effective deployment and usable indoor localization. With its integration into mobile APIs and its synergy with <strong>machine learning</strong>, fingerprinting transforms unreliable signal metrics into <strong>actionable, spatial insights</strong>.</p>
+
+<p>But this approach is not without nuance. It requires:</p>
+
+<ul>
+  <li>Intelligent system design</li>
+  <li>Awareness of fading/channel effects</li>
+  <li>Continuous calibration and refinement</li>
+</ul>
+
+<p>As IoT systems scale and smart environments become the norm, RSSI fingerprinting offers a <strong>pragmatic, powerful localization layer</strong> that is well-aligned with the needs of modern connectivity.</p>
+
+<hr />
+
+<p><em>For feedback, collaboration, or to share your own fingerprinting deployment stories, feel free to reach out on <a href="https://www.linkedin.com/in/rohitprakashmk/">LinkedIn</a> or <a href="https://github.com/rohxander">GitHub</a>.</em></p>]]></content><author><name></name></author><category term="IoT" /><category term="Localization" /><category term="Wireless Systems" /><category term="RSSI" /><category term="Fingerprinting" /><category term="Indoor Localization" /><category term="IoT" /><category term="Channel Models" /><category term="Machine Learning" /><summary type="html"><![CDATA[An exploration of RSSI-based localization and fingerprinting techniques—highlighting methods, challenges, and intelligent enhancements for future IoT systems.]]></summary></entry><entry><title type="html">Visions for 6G: Building Smarter and More Connected Networks</title><link href="https://rohxander.github.io/blog/2025/visions-for-6g-copy/" rel="alternate" type="text/html" title="Visions for 6G: Building Smarter and More Connected Networks" /><published>2025-07-08T10:00:00+00:00</published><updated>2025-07-08T10:00:00+00:00</updated><id>https://rohxander.github.io/blog/2025/visions-for-6g%20copy</id><content type="html" xml:base="https://rohxander.github.io/blog/2025/visions-for-6g-copy/"><![CDATA[<h2 id="introduction">Introduction</h2>
+
+<p>6G is the next big step in wireless communication after 5G. But it’s not just about faster internet. It’s about making networks <strong>smarter, more reliable, and available everywhere</strong>—even in places with no connection today.</p>
+
+<p>6G is being designed to help with things like:</p>
+
+<ul>
+  <li>Real-time applications (like remote surgery or self-driving cars)</li>
+  <li>Smarter cities and industries</li>
+  <li>Better internet in remote or rural areas</li>
+  <li>Safer communication during disasters</li>
+</ul>
+
+<p>Let’s explore how 6G plans to make this possible.</p>
+
+<hr />
+
+<h2 id="a-new-kind-of-network-focused-on-people-not-just-towers">A New Kind of Network: Focused on People, Not Just Towers</h2>
+
+<p>Most networks today are built around towers (called “cells”). Each user connects to a tower in their area. But this can lead to weak signals or dropped connections at the edges.</p>
+
+<p>6G will move to a <strong>user-focused design</strong>. That means:</p>
+
+<ul>
+  <li>Devices will be served by many small antennas working together.</li>
+  <li>The network will adjust based on where the user is and what they need.</li>
+  <li>This improves connection strength and stability.</li>
+</ul>
+
+<hr />
+
+<h2 id="sensing-and-communication-combined">Sensing and Communication Combined</h2>
+
+<p>In 6G, networks won’t just send and receive data—they’ll also <strong>sense the environment</strong>. This is called <strong>ISAC: Integrated Sensing and Communication</strong>.</p>
+
+<p>What this means:</p>
+
+<ul>
+  <li>Devices will know where they are more accurately (within a few centimeters).</li>
+  <li>The network can detect motion, objects, or changes in the surroundings.</li>
+  <li>This is useful for robots, self-driving cars, or smart factories.</li>
+</ul>
+
+<hr />
+
+<h2 id="smarter-networks-with-artificial-intelligence">Smarter Networks with Artificial Intelligence</h2>
+
+<p>6G will use <strong>AI (Artificial Intelligence)</strong> to manage and improve the network automatically.</p>
+
+<p>Here’s how AI will help:</p>
+
+<ul>
+  <li>Predicting where users are moving and adjusting connections</li>
+  <li>Choosing the best antennas or signal direction</li>
+  <li>Saving energy by turning off parts of the network when not needed</li>
+</ul>
+
+<p>In short, 6G networks will <strong>learn and adapt</strong> in real time.</p>
+
+<hr />
+
+<h2 id="connecting-the-unconnected-using-satellites-and-drones">Connecting the Unconnected: Using Satellites and Drones</h2>
+
+<p>To provide internet <strong>everywhere</strong>, 6G will use not just ground towers, but also:</p>
+
+<ul>
+  <li><strong>Satellites in space</strong></li>
+  <li><strong>Drones or high-flying balloons</strong></li>
+</ul>
+
+<p>This is called <strong>NTN: Non-Terrestrial Networks</strong>.</p>
+
+<p>These technologies can:</p>
+
+<ul>
+  <li>Bring internet to rural villages, oceans, or disaster zones</li>
+  <li>Help during emergencies when ground networks are damaged</li>
+  <li>Make sure no one is left behind in the digital world</li>
+</ul>
+
+<hr />
+
+<h2 id="designed-to-save-energy-and-be-sustainable">Designed to Save Energy and Be Sustainable</h2>
+
+<p>As more devices get connected, energy use becomes a big concern.</p>
+
+<p>6G will be <strong>built for energy efficiency</strong>, meaning:</p>
+
+<ul>
+  <li>Devices will use very little power to stay connected</li>
+  <li>The network will sleep when not needed</li>
+  <li>Smarter scheduling will reduce waste</li>
+</ul>
+
+<p>This is important for smart homes, sensors in cities, and the environment.</p>
+
+<hr />
+
+<h2 id="a-simple-look-at-the-future-network">A Simple Look at the Future Network</h2>
+
+<div class="row mt-3 mb-2">
+  <div class="col-sm mt-3 mt-md-0 text-center">
+    
+
+
+
+<figure>
+  <picture>
+    <!-- Auto scaling with imagemagick -->
+    <!--
+      See https://www.debugbear.com/blog/responsive-images#w-descriptors-and-the-sizes-attribute and
+      https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images for info on defining 'sizes' for responsive images
+    -->
+    
+      
+        <source class="responsive-img-srcset" srcset="/assets/img/6g-vision-diagram-480.webp 480w,/assets/img/6g-vision-diagram-800.webp 800w,/assets/img/6g-vision-diagram-1400.webp 1400w," type="image/webp" sizes="95vw" />
+      
+    
+    <img src="/assets/img/6g-vision-diagram.png" class="img-fluid rounded z-depth-1" width="100%" height="auto" data-zoomable="" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+  </picture>
+
+  
+</figure>
+
+  </div>
+</div>
+
+<div class="caption">
+  A future 6G network using satellites, drones, sensing, and AI to connect people everywhere.
+</div>
+
+<hr />
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>6G is not just about speed. It’s about building <strong>networks that are smart, aware, and helpful</strong>—networks that:</p>
+
+<ul>
+  <li>Think for themselves</li>
+  <li>Support safety, health, and education</li>
+  <li>Reach places that were never connected before</li>
+</ul>
+
+<p>As we look ahead to 2030 and beyond, 6G has the potential to truly change how people live, work, and communicate—<strong>for everyone, everywhere</strong>.</p>
+
+<hr />
+
+<p><em>Want to talk about future networks or smart technologies? Feel free to connect via <a href="https://github.com/rohxander">GitHub</a> or <a href="https://www.linkedin.com/in/rohitprakashmk/">LinkedIn</a>.</em></p>]]></content><author><name></name></author><category term="6G" /><category term="Future Technology" /><category term="6G" /><category term="Future Networks" /><category term="AI" /><category term="Sensing" /><category term="Satellites" /><category term="Energy Efficiency" /><summary type="html"><![CDATA[A simple and clear explanation of what 6G networks aim to achieve, and how they will change the way we connect and communicate in the future.]]></summary></entry></feed>

@@ -44,7 +44,18 @@ ninja.data = [{
               handler: () => {
                 window.location.href = "/blog/";
               },
-            },{id: "post-visions-for-6g-building-smarter-and-more-connected-networks",
+            },{id: "post-dream-a-6g-ready-architecture-for-disaster-response",
+        
+          title: "DREAM: A 6G-Ready Architecture for Disaster Response",
+        
+        description: "How 6G concepts can be used to rapidly restore critical communication networks during natural disasters.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2025/6g_for_all_Report/";
+          
+        },
+      },{id: "post-visions-for-6g-building-smarter-and-more-connected-networks",
         
           title: "Visions for 6G: Building Smarter and More Connected Networks",
         
@@ -52,7 +63,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2025/visions-for-6g/";
+            window.location.href = "/blog/2025/visions-for-6g-copy/";
           
         },
       },{id: "post-rssi-fingerprinting-in-iot-a-modern-approach-to-indoor-localization",
