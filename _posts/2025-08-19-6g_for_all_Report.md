@@ -46,6 +46,7 @@ DREAM is designed to **work fast, remain resilient, and scale**. Its key princip
       path="assets/img/DREAM ARCHITECTURAL DIAGRAM.png" 
       class="img-fluid rounded z-depth-1" 
       zoomable=true 
+      width="40%" 
     %}
   </div>
 </div>
@@ -73,6 +74,7 @@ To reach areas blocked by rubble or terrain:
       path="assets/img/RIS.png" 
       class="img-fluid rounded z-depth-1" 
       zoomable=true 
+      width="40%" 
     %}
   </div>
 </div>
@@ -88,12 +90,13 @@ DREAM uses multiple backhaul methods **simultaneously**. If one fails, the other
 - Microwave
 - NR-NTN via LEO satellites
 <div class="row mt-3 mb-2">
-  <div class="col-sm mt-3 mt-md-0 text-center">
+  <div class="col-sm mt-3 mt-md-0 text-center" >
     {% include figure.liquid 
       loading="eager" 
       path="assets/img/NTN.png" 
       class="img-fluid rounded z-depth-1" 
-      zoomable=true 
+      zoomable=true
+      width="40%" 
     %}
   </div>
 </div>
@@ -112,6 +115,7 @@ DREAM uses multiple backhaul methods **simultaneously**. If one fails, the other
       path="assets/img/SIDELINK AND ADHOC.png" 
       class="img-fluid rounded z-depth-1" 
       zoomable=true 
+      width="40%"
     %}
   </div>
 </div>
@@ -133,6 +137,7 @@ Even without the internet, local edge servers can:
       path="assets/img/BEAMFORMING.png" 
       class="img-fluid rounded z-depth-1" 
       zoomable=true 
+      width="40%" 
     %}
   </div>
 </div>
