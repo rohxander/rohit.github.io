@@ -13,7 +13,7 @@ featured: true
 
 When disasters strike—earthquakes, floods, wildfires—communication networks often fail first. Base stations go down, fiber cables snap, and towers overload. In these critical hours, reliable communication can save lives, yet the existing infrastructure struggles to cope.
 
-**DREAM (Disaster Response and Emergency Actions for Mitigation)** is a 6G-ready architecture designed to provide **rapid, minimum-viable communication** in disaster-hit areas. Built using 5G-Advanced features and shaped by insights from the *EELISA "6G for All"* Summer School, DREAM aims to restore **alerts, voice, and basic data** within the **first hour**, then scale as resources arrive.
+**DREAM (Disaster Response and Emergency Actions for Mitigation)** is a 6G-ready architecture designed to provide **rapid, minimum-viable communication** in disaster-hit areas. Built using 5G-Advanced features and shaped by insights from the _EELISA "6G for All"_ Summer School, DREAM aims to restore **alerts, voice, and basic data** within the **first hour**, then scale as resources arrive.
 
 ---
 
@@ -21,9 +21,9 @@ When disasters strike—earthquakes, floods, wildfires—communication networks 
 
 Today’s disaster recovery often involves:
 
-- Portable base stations on trucks  
-- Satellite phones for backhaul  
-- Public alerts via SMS, radio, and social media  
+- Portable base stations on trucks
+- Satellite phones for backhaul
+- Public alerts via SMS, radio, and social media
 - Volunteers setting up ad-hoc Wi-Fi
 
 These are useful—but **slow**, fragile, and lack coordination. A single broken fiber link or congested cell tower can isolate survivors and responders alike.
@@ -161,9 +161,9 @@ DREAM’s rollout happens in **stages**:
 
 DREAM supports multiple UN Sustainable Development Goals:
 
-- **SDG 3** – Health: enable hospital comms in <60 min  
-- **SDG 9** – Infrastructure: redundancy, no single points of failure  
-- **SDG 11** – Cities: geofenced alerts, urban resilience  
+- **SDG 3** – Health: enable hospital comms in <60 min
+- **SDG 9** – Infrastructure: redundancy, no single points of failure
+- **SDG 11** – Cities: geofenced alerts, urban resilience
 - **SDG 13** – Climate: power-aware operation with minimal waste
 
 ---
@@ -172,13 +172,13 @@ DREAM supports multiple UN Sustainable Development Goals:
 
 DREAM is not a concept—it’s a **deployable blueprint**.
 
-- Alerts and responder calls in under an hour  
-- Works with commercial phones and standard 5G tools  
-- Grows stronger as help arrives  
+- Alerts and responder calls in under an hour
+- Works with commercial phones and standard 5G tools
+- Grows stronger as help arrives
 - Survives the first 72 hours, when communication matters most
 
-This project was developed during the *EELISA "6G for All"* Summer School, guided by real-world lectures on **Open RAN**, **Virtualization**, **NTN**, and **JC&S**. It’s a vision that turns 6G from a futuristic buzzword into a **lifesaving tool**.
+This project was developed during the _EELISA "6G for All"_ Summer School, guided by real-world lectures on **Open RAN**, **Virtualization**, **NTN**, and **JC&S**. It’s a vision that turns 6G from a futuristic buzzword into a **lifesaving tool**.
 
 ---
 
-_Want to know more about 6G research or emergency network design? Let's connect on [LinkedIn] (https://www.linkedin.com/in/rohitprakashmk/) or explore [GitHub](https://github.com/rohxander)._  
+_Want to know more about 6G research or emergency network design? Let's connect on [LinkedIn] (https://www.linkedin.com/in/rohitprakashmk/) or explore [GitHub](https://github.com/rohxander)._
