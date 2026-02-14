@@ -9,19 +9,26 @@ ninja.data = [{
     handler: () => {
       window.location.href = "/";
     },
-  },{id: "nav-blog",
+  },{id: "nav-projects",
+          title: "projects",
+          description: "Industrial systems, firmware applications, and personal experiments.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/projects/";
+          },
+        },{id: "nav-blog",
           title: "blog",
           description: "",
           section: "Navigation",
           handler: () => {
             window.location.href = "/blog/";
           },
-        },{id: "nav-projects",
-          title: "projects",
-          description: "A portfolio of engineering, experimentation, and expression.",
+        },{id: "nav-bookshelf",
+          title: "bookshelf",
+          description: "",
           section: "Navigation",
           handler: () => {
-            window.location.href = "/projects/";
+            window.location.href = "/books/";
           },
         },{id: "nav-cv",
           title: "cv",
@@ -30,21 +37,7 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/cv/";
           },
-        },{id: "dropdown-bookshelf",
-              title: "bookshelf",
-              description: "",
-              section: "Dropdown",
-              handler: () => {
-                window.location.href = "/books/";
-              },
-            },{id: "dropdown-blog",
-              title: "blog",
-              description: "",
-              section: "Dropdown",
-              handler: () => {
-                window.location.href = "/blog/";
-              },
-            },{id: "post-dream-a-6g-ready-architecture-for-disaster-response",
+        },{id: "post-dream-a-6g-ready-architecture-for-disaster-response",
         
           title: "DREAM: A 6G-Ready Architecture for Disaster Response",
         
@@ -87,16 +80,17 @@ ninja.data = [{
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/the_stranger/";
-            },},{id: "news-a-simple-inline-announcement",
-          title: 'A simple inline announcement.',
+            },},{id: "news-completed-a-2-year-tenure-at-microchip-technology-as-application-engineer-shipped-enterprise-wi-fi-security-wpa2-wpa3-uart-flow-control-at-25-mbps-qspi-flash-drivers-and-supported-global-certifications-fcc-ce-tüv",
+          title: '🔧 Completed a 2-year tenure at Microchip Technology as Application Engineer — shipped...',
           description: "",
-          section: "News",},{id: "news-a-long-announcement-with-details",
-          title: 'A long announcement with details',
+          section: "News",},{id: "news-started-my-m-sc-in-information-amp-amp-communication-technology-at-fau-erlangen-nürnberg-diving-deep-into-embedded-systems-wireless-communication-mimo-and-ai",
+          title: '🎓 Started my M.Sc. in Information &amp;amp;amp; Communication Technology at FAU Erlangen-Nürnberg —...',
           description: "",
-          section: "News",handler: () => {
-              window.location.href = "/news/announcement_2/";
-            },},{id: "news-a-simple-inline-announcement-with-markdown-emoji-sparkles-smile",
-          title: 'A simple inline announcement with Markdown emoji! :sparkles: :smile:',
+          section: "News",},{id: "news-joined-exasol-ag-in-nuremberg-as-a-working-student-in-it-operations-amp-amp-analytics-building-power-bi-dashboards-supporting-salesforce-workflows-and-debugging-internal-systems",
+          title: '💼 Joined Exasol AG in Nuremberg as a Working Student in IT Operations...',
+          description: "",
+          section: "News",},{id: "news-portfolio-redesigned-and-launched-a-clean-futuristic-space-to-showcase-projects-writing-and-engineering-work-built-with-jekyll-and-deployed-on-github-pages",
+          title: '🚀 Portfolio redesigned and launched — a clean, futuristic space to showcase projects,...',
           description: "",
           section: "News",},{id: "projects-high-speed-uart-flow-control-application",
           title: 'High-Speed UART Flow Control Application',
@@ -134,6 +128,13 @@ ninja.data = [{
         section: 'Socials',
         handler: () => {
           window.open("mailto:%72%6F%68%69%74.%70%72%61%6B%61%73%68@%66%61%75.%64%65", "_blank");
+        },
+      },{
+        id: 'social-github',
+        title: 'GitHub',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://github.com/rohxander", "_blank");
         },
       },{
         id: 'social-linkedin',
