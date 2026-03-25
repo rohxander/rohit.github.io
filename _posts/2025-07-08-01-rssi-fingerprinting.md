@@ -3,9 +3,9 @@ layout: post
 title: "RSSI Fingerprinting in IoT: A Modern Approach to Indoor Localization"
 date: 2025-07-08 10:00:00
 description: "An exploration of RSSI-based localization and fingerprinting techniques—highlighting methods, challenges, and intelligent enhancements for future IoT systems."
-tags: [RSSI, Fingerprinting, Indoor Localization, IoT, Channel Models, Machine Learning]
+tags: [tech, localization]
 categories: [IoT, Localization, Wireless Systems]
-thumbnail: assets/img/rssi-fingerprint-diagram.png
+thumbnail: assets/img/posts/thumbnail_2025-07-08-01-rssi-fingerprinting.png
 featured: true
 ---
 

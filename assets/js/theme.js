@@ -23,7 +23,7 @@ let setThemeSetting = (themeSetting) => {
 
 // Apply the computed dark or light theme to the website.
 let applyTheme = () => {
-  let theme = determineComputedTheme();
+  let theme = document.documentElement.getAttribute("data-theme") || "dark";
 
   transTheme();
   setHighlight(theme);
@@ -55,7 +55,8 @@ let applyTheme = () => {
     setVegaLiteTheme(theme);
   }
 
-  document.documentElement.setAttribute("data-theme", theme);
+  // Server handles the root CSS attribute
+  // document.documentElement.setAttribute("data-theme", theme);
 
   // Add class to tables.
   let tables = document.getElementsByTagName("table");
@@ -251,47 +252,11 @@ let transTheme = () => {
   }, 500);
 };
 
-// Determine the expected state of the theme toggle, which can be "dark", "light", or
-// "system". Default is "system".
-let determineThemeSetting = () => {
-  let themeSetting = localStorage.getItem("theme");
-  if (themeSetting != "dark" && themeSetting != "light" && themeSetting != "system") {
-    themeSetting = "system";
-  }
-  return themeSetting;
-};
-
-// Determine the computed theme, which can be "dark" or "light". If the theme setting is
-// "system", the computed theme is determined based on the user's system preference.
-let determineComputedTheme = () => {
-  let themeSetting = determineThemeSetting();
-  if (themeSetting == "system") {
-    const userPref = window.matchMedia;
-    if (userPref && userPref("(prefers-color-scheme: dark)").matches) {
-      return "dark";
-    } else {
-      return "light";
-    }
-  } else {
-    return themeSetting;
-  }
-};
-
 let initTheme = () => {
-  let themeSetting = determineThemeSetting();
+  applyTheme();
 
-  setThemeSetting(themeSetting);
-
-  // Add event listener to the theme toggle button.
-  document.addEventListener("DOMContentLoaded", function () {
-    const mode_toggle = document.getElementById("light-toggle");
-
-    mode_toggle.addEventListener("click", function () {
-      toggleThemeSetting();
-    });
-  });
-
-  // Add event listener to the system theme preference change.
+  // Add event listener to the system theme preference change if needed for embedded content, 
+  // but do not override the entire site layout anymore.
   window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", ({ matches }) => {
     applyTheme();
   });

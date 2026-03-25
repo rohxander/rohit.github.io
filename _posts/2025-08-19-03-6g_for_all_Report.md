@@ -3,9 +3,9 @@ layout: post
 title: "DREAM: A 6G-Ready Architecture for Disaster Response"
 date: 2025-08-19 09:00:00
 description: "How 6G concepts can be used to rapidly restore critical communication networks during natural disasters."
-tags: [6G, Emergency Communication, NTN, AI, Edge Computing, Sidelink]
+tags: [tech, 6G]
 categories: [6G, Research, Emergency Tech]
-thumbnail: assets/img/DREAM ARCHITECTURAL DIAGRAM.png
+thumbnail: assets/img/posts/thumbnail_2025-08-19-03-6g_for_all_Report.png
 featured: true
 ---
 
@@ -43,7 +43,7 @@ DREAM is designed to **work fast, remain resilient, and scale**. Its key princip
   <div class="col-sm mt-3 mt-md-0 text-center">
     {% include figure.liquid 
       loading="eager" 
-      path="assets/img/DREAM ARCHITECTURAL DIAGRAM.png" 
+      path="assets/img/posts/article_img_1_2025-08-19-03-6g_for_all_Report.png" 
       class="img-fluid rounded z-depth-1" 
       zoomable=true 
       width="40%" 
@@ -71,7 +71,7 @@ To reach areas blocked by rubble or terrain:
   <div class="col-sm mt-3 mt-md-0 text-center">
     {% include figure.liquid 
       loading="eager" 
-      path="assets/img/RIS.png" 
+      path="assets/img/posts/article_img_2_2025-08-19-03-6g_for_all_Report.png" 
       class="img-fluid rounded z-depth-1" 
       zoomable=true 
       width="40%" 
@@ -93,7 +93,7 @@ DREAM uses multiple backhaul methods **simultaneously**. If one fails, the other
   <div class="col-sm mt-3 mt-md-0 text-center" >
     {% include figure.liquid 
       loading="eager" 
-      path="assets/img/NTN.png" 
+      path="assets/img/posts/article_img_3_2025-08-19-03-6g_for_all_Report.png" 
       class="img-fluid rounded z-depth-1" 
       zoomable=true
       width="40%" 
@@ -112,7 +112,7 @@ DREAM uses multiple backhaul methods **simultaneously**. If one fails, the other
   <div class="col-sm mt-3 mt-md-0 text-center">
     {% include figure.liquid 
       loading="eager" 
-      path="assets/img/SIDELINK AND ADHOC.png" 
+      path="assets/img/posts/article_img_4_2025-08-19-03-6g_for_all_Report.png" 
       class="img-fluid rounded z-depth-1" 
       zoomable=true 
       width="40%"
@@ -134,7 +134,7 @@ Even without the internet, local edge servers can:
   <div class="col-sm mt-3 mt-md-0 text-center">
     {% include figure.liquid 
       loading="eager" 
-      path="assets/img/BEAMFORMING.png" 
+      path="assets/img/posts/article_img_5_2025-08-19-03-6g_for_all_Report.png" 
       class="img-fluid rounded z-depth-1" 
       zoomable=true 
       width="40%" 

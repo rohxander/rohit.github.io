@@ -1,7 +1,9 @@
 ---
 layout: about
-title: about
-permalink: /
+title: Persona
+permalink: /alter-ego/
+nav: true
+nav_order: 2
 subtitle: <a href='#'>Driven by Curiosity. Defined by Clarity.</a>
 
 profile:

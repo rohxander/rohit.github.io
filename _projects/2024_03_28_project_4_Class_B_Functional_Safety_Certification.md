@@ -1,8 +1,9 @@
 ---
-layout: page
+layout: project
+date: 2024-03-28
 title: Class-B Functional Safety Certification
 description: Assisted in validating error-catch mechanisms for SRAM, FLASH, CPU, and I/O to support EN/IEC 60730 Class-B safety certification on PIC32MZW1.
-img: assets/img/class_b_thumbnail.png
+img: assets/img/projects/thumbnail_project_4_Class_B_Functional_Safety_Certification.png
 importance: 4
 category: Industrial
 related_publications: false
@@ -58,7 +59,7 @@ I joined the project during the post-development phase and was responsible for e
 
 <div class="row">
   <div class="col-sm mt-3 mt-md-0">
-    {% include figure.liquid loading="eager" path="assets/img/WFI32E02.png" title="PIC32MZW1 Module (WFI32 variant)" class="img-fluid rounded z-depth-1" %}
+    {% include figure.liquid loading="eager" path="assets/img/projects/article_img_1_project_4_Class_B_Functional_Safety_Certification.png" title="PIC32MZW1 Module (WFI32 variant)" class="img-fluid rounded z-depth-1" %}
   </div>
 </div>
 

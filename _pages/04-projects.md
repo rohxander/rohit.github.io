@@ -4,7 +4,7 @@ title: projects
 permalink: /projects/
 description: A portfolio of engineering, experimentation, and expression.
 nav: true
-nav_order: 3
+nav_order: 4
 display_categories: [Industrial, Academic, Personal]
 horizontal: false
 ---

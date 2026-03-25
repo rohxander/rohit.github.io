@@ -1,8 +1,9 @@
 ---
-layout: page
+layout: project
+date: 2024-03-28
 title: Wi‑Fi Enterprise Security Application
 description: Implemented WPA2/WPA3 Enterprise (TTLS/TLS/PEAP) with FreeRADIUS integration on WFI32 modules.
-img: assets/img/tls_1_3.png
+img: assets/img/projects/thumbnail_project_2_Wi_Fi_Enterprise_Security_Application.png
 importance: 2
 category: Industrial
 related_publications: false
@@ -28,7 +29,7 @@ The authentication server guards to protect the network and does not allow the s
 
 <div class="row">
   <div class="col-sm mt-3 mt-md-0">
-    {% include figure.liquid loading="eager" path="assets/img/WIFI_ENT_1.png" class="img-fluid rounded z-depth-1" %}
+    {% include figure.liquid loading="eager" path="assets/img/projects/article_img_1_project_2_Wi_Fi_Enterprise_Security_Application.png" class="img-fluid rounded z-depth-1" %}
   </div>
 </div>
 
@@ -48,7 +49,7 @@ Finally, the authentication server and the supplicant must agree on one EAP meth
 
 <div class="row">
   <div class="col-sm mt-3 mt-md-0">
-    {% include figure.liquid loading="eager" path="assets/img/WIFI_ENT_2.png" class="img-fluid rounded z-depth-1" %}
+    {% include figure.liquid loading="eager" path="assets/img/projects/article_img_2_project_2_Wi_Fi_Enterprise_Security_Application.png" class="img-fluid rounded z-depth-1" %}
   </div>
 </div>
 
@@ -60,7 +61,7 @@ The Extensible Authentication Protocol (EAP) is a point-to-point (P2P) wireless 
 
 <div class="row">
   <div class="col-sm mt-3 mt-md-0">
-    {% include figure.liquid loading="eager" path="assets/img/WIFI_ENT_3.png" class="img-fluid rounded z-depth-1" %}
+    {% include figure.liquid loading="eager" path="assets/img/projects/article_img_3_project_2_Wi_Fi_Enterprise_Security_Application.png" class="img-fluid rounded z-depth-1" %}
   </div>
 </div>
 
@@ -68,7 +69,7 @@ During EAP authentication, the supplicant and the authentication server derive a
 
 <div class="row">
   <div class="col-sm mt-3 mt-md-0">
-    {% include figure.liquid loading="eager" path="assets/img/WIFI_ENT_4.png" class="img-fluid rounded z-depth-1" %}
+    {% include figure.liquid loading="eager" path="assets/img/projects/article_img_4_project_2_Wi_Fi_Enterprise_Security_Application.png" class="img-fluid rounded z-depth-1" %}
   </div>
 </div>
 

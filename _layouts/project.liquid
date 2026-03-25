@@ -1,0 +1,35 @@
+---
+layout: default
+---
+<!-- Full Bleed Hero if present -->
+{% if page.img or page.thumbnail %}
+  <header class="post-header full-bleed-hero" style="background-image: url('{{ page.img | default: page.thumbnail | relative_url }}');">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 class="post-title">{{ page.title }}</h1>
+      <p class="post-description lead">{{ page.description }}</p>
+    </div>
+  </header>
+{% else %}
+  <header class="post-header editorial-content text-left" style="margin-top: 6rem; margin-bottom: 2rem;">
+    <h1 class="post-title" style="font-size: clamp(2.5rem, 5vw, 4rem); letter-spacing: -0.04em; margin-bottom: 1rem;">{{ page.title }}</h1>
+    <p class="post-description lead" style="font-size: 1.35rem; color: var(--global-text-muted);">{{ page.description }}</p>
+  </header>
+{% endif %}
+
+<!-- Editorial Content Body -->
+<article class="editorial-content">
+  {% if page.toc and page.toc.beginning %}
+    <div id="table-of-contents" style="margin-bottom: 3rem; padding: 1.5rem; background: var(--global-code-bg-color); border-left: 4px solid var(--global-theme-color);">
+      {% toc %}
+    </div>
+  {% endif %}
+  
+  <div id="markdown-content">
+    {{ content }}
+  </div>
+
+  {% if site.giscus and page.giscus_comments %}
+    {% include giscus.liquid %}
+  {% endif %}
+</article>

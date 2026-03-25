@@ -1,8 +1,9 @@
 ---
-layout: page
+layout: project
+date: 2024-03-28
 title: QSPI Validation Application
 description: Integrated and validated QSPI/SQI flash interface on Microchip modules.
-img: assets/img/qspi.png
+img: assets/img/projects/thumbnail_project_3_QSPI_Validation_Application.png
 importance: 3
 category: Industrial
 related_publications: false

@@ -1,8 +1,9 @@
 ---
-layout: page
+layout: project
+date: 2024-03-28
 title: TÜV Certification & Module Validation
 description: Developed IPv6-compatible firmware applications to support CE/FCC certification and validate UART, SPI, I2C, ADC, PWM, Ethernet, and Wi-Fi peripherals on PIC32MZW1.
-img: assets/img/certification.png
+img: assets/img/projects/thumbnail_project_5_T_V_Certification_Module_Validation.png
 importance: 5
 category: Industrial
 related_publications: false
@@ -63,7 +64,7 @@ External antennas, RF test jigs
 
 <div class="row">
   <div class="col-sm mt-3 mt-md-0">
-    {% include figure.liquid loading="eager" path="assets/img/WFI32E02.png" title="WFI32E02 module used in regulatory testing" class="img-fluid rounded z-depth-1" %}
+    {% include figure.liquid loading="eager" path="assets/img/projects/article_img_1_project_5_T_V_Certification_Module_Validation.png" title="WFI32E02 module used in regulatory testing" class="img-fluid rounded z-depth-1" %}
   </div>
 </div>
 

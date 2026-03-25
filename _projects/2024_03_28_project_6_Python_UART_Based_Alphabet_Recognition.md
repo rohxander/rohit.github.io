@@ -1,8 +1,9 @@
 ---
-layout: page
+layout: project
+date: 2024-03-28
 title: Python UART-Based Alphabet Recognition
 description: Built a Python GUI to read QT8 touchpad input over UART and recognize alphabet characters from 5x5 touch matrices.
-img: assets/img/touch_recognition.png
+img: assets/img/projects/thumbnail_project_6_Python_UART_Based_Alphabet_Recognition.png
 importance: 1
 category: Personal
 related_publications: false
@@ -50,7 +51,7 @@ The board transmitted a **5x5 matrix** over UART representing capacitive touch d
 
 <div class="row">
   <div class="col-sm mt-3 mt-md-0">
-    {% include figure.liquid loading="eager" path="assets/img/touch_recognition.png" title="Alphabet Recognition GUI" class="img-fluid rounded z-depth-1" %}
+    {% include figure.liquid loading="eager" path="assets/img/projects/article_img_1_project_6_Python_UART_Based_Alphabet_Recognition.png" title="Alphabet Recognition GUI" class="img-fluid rounded z-depth-1" %}
   </div>
 </div>
 

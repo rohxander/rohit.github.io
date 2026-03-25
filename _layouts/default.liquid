@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ site.lang }}">
+<html lang="{{ site.lang }}" data-theme="{{ page.theme | default: site.theme | default: 'dark' }}">
   <!-- Head -->
   <head>
     {% if page.redirect %}
@@ -21,36 +21,50 @@
     {% include header.liquid %}
 
     <!-- Content -->
-    <div class="container mt-5" role="main">
-      {% if page.toc and page.toc.sidebar %}
-        {% if page.toc.sidebar == 'right' %}
-          <div class="row">
-            <!-- main content area -->
-            <div class="col-sm-9">{{ content }}</div>
-            <!-- sidebar, which will move to the top on a small screen -->
-            <div class="col-sm-3">
-              <nav id="toc-sidebar" class="sticky-top"></nav>
-            </div>
-          </div>
-        {% else %}
-          <div class="row">
-            <!-- sidebar, which will move to the top on a small screen -->
-            <div class="col-sm-3">
-              <nav id="toc-sidebar" class="sticky-top"></nav>
-            </div>
-            <!-- main content area -->
-            <div class="col-sm-9">{{ content }}</div>
-          </div>
-        {% endif %}
-      {% else %}
+    {% if page.layout == 'post' or page.layout == 'project' %}
+      <main role="main">
         {{ content }}
-      {% endif %}
-    </div>
+      </main>
+    {% else %}
+      <div class="container mt-5" role="main">
+        {% if page.toc and page.toc.sidebar %}
+          {% if page.toc.sidebar == 'right' %}
+            <div class="row">
+              <div class="col-sm-9">{{ content }}</div>
+              <div class="col-sm-3">
+                <nav id="toc-sidebar" class="sticky-top"></nav>
+              </div>
+            </div>
+          {% else %}
+            <div class="row">
+              <div class="col-sm-3">
+                <nav id="toc-sidebar" class="sticky-top"></nav>
+              </div>
+              <div class="col-sm-9">{{ content }}</div>
+            </div>
+          {% endif %}
+        {% else %}
+          {{ content }}
+        {% endif %}
+      </div>
+    {% endif %}
 
     <!-- Footer -->
     {% include footer.liquid %}
 
     <!-- JavaScripts -->
     {% include scripts.liquid %}
+    
+    <!-- Medium Zoom -->
+    <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        mediumZoom('.editorial-content img', {
+          margin: 24,
+          background: '#0a0a0a',
+          scrollOffset: 0
+        });
+      });
+    </script>
   </body>
 </html>

@@ -15,6 +15,20 @@ body {
   h6 {
     scroll-margin-top: 66px;
   }
+
+  h2 {
+    margin-top: 5rem;
+    margin-bottom: 2rem;
+  }
+
+  h3 {
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+section, .post, .projects, .publications, .news {
+  margin-bottom: 6rem;
 }
 
 body.fixed-top-nav {
