@@ -20,7 +20,7 @@ keywords: jekyll, jekyll-theme, academic-website, portfolio-website # add your o
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
 icon: ⚛️ # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
 
-url: "https://rohit.github.io" # ✅ your GitHub Pages domain
+url: "https://rohxander.github.io" # ✅ your GitHub Pages domain
 baseurl: "" # ✅ must be empty for user/username.github.io sites
 
 last_updated: false # set to true if you want to display last updated in the footer
